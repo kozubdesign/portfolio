@@ -40,7 +40,6 @@ a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px;te
 a:hover{color:var(--accent)}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:2px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
 header.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px var(--px)}
 header.top nav{display:flex;gap:22px;font-size:.95rem}
 header.top nav a{text-decoration:none;color:var(--muted);transition:color .2s}
@@ -50,27 +49,24 @@ header.top nav a:hover{color:var(--ink)}
 #themes button:hover{color:var(--accent)}
 #themes button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 
-/* ===== HERO Variant D ===== */
+/* ===== HERO (новый вариант) ===== */
 .hero{
   display:grid;
-  grid-template-columns:280px 1fr;
+  grid-template-columns:260px 1fr;
   gap:48px 64px;
   padding:56px var(--px) 72px;
   align-items:start;
 }
-.hero-left h1{
-  font-size:clamp(2rem,4.5vw,3.1rem);
-  line-height:1.05;
-  letter-spacing:-.035em;
-  font-weight:700;
-  margin:20px 0 12px;
+.hero-left{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
 }
-.hero-left .lead{
-  font-size:1.15rem;
-  line-height:1.45;
-  color:var(--muted);
-  margin:0;
-  max-width:28ch;
+.hero-left .btn.main{
+  width:100%;
+  text-align:center;
+  padding:14px 20px;
+  font-size:1.05rem;
 }
 .photo{
   display:block;
@@ -82,30 +78,28 @@ header.top nav a:hover{color:var(--ink)}
 .hero-right{
   display:flex;
   flex-direction:column;
-  gap:28px;
-  padding-top:8px;
+  gap:20px;
+  padding-top:4px;
 }
-.hero-right .spec{margin:0}
-.hero-right .spec div{
-  display:grid;
-  grid-template-columns:7rem 1fr;
-  gap:16px;
-  padding:11px 0;
-  border-bottom:1px solid var(--line);
+.hero-right h1{
+  font-size:clamp(2.1rem,4.5vw,3.1rem);
+  line-height:1.05;
+  letter-spacing:-.035em;
+  font-weight:700;
+  margin:0;
 }
-.hero-right .spec div:first-child{border-top:1px solid var(--line)}
-.hero-right .spec dt{color:var(--muted);font-size:.95rem}
-.hero-right .spec dd{margin:0;line-height:1.5}
-.hero-right .btn.main{
-  align-self:stretch;
-  text-align:center;
-  padding:16px 24px;
-  font-size:1.1rem;
+.hero-right .lead{
+  font-size:1.15rem;
+  line-height:1.5;
+  color:var(--muted);
+  margin:0;
+  max-width:34ch;
 }
 .hero-contacts{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:12px;
+  margin-top:8px;
 }
 .hero-contacts a{
   display:inline-flex;
@@ -113,6 +107,7 @@ header.top nav a:hover{color:var(--ink)}
   gap:.65em;
   text-decoration:none;
   color:var(--ink);
+  font-size:1.05rem;
 }
 .hero-contacts a:hover{color:var(--accent)}
 .hero-contacts svg{color:var(--accent2);flex-shrink:0}
@@ -121,7 +116,6 @@ header.top nav a:hover{color:var(--ink)}
 .btn.sm{padding:7px 16px;font-size:.9rem}
 .btn.main{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .btn.main:hover{color:var(--accent-ink);filter:brightness(1.1);transform:translateY(-2px)}
-
 section{padding:72px var(--px);transition:background-color .4s ease}
 #about,#skills{background:var(--bg2)}
 #projects{padding:0}
@@ -179,7 +173,6 @@ ol.jobs strong{display:block}
 .thanks{margin:0;text-align:right;font-size:clamp(2.4rem,6vw,4.25rem);line-height:1.05;font-weight:700;letter-spacing:-.03em;color:var(--accent)}
 .copy{margin:0;font-size:1rem;font-family:Arial,'Helvetica Neue',Helvetica,system-ui,sans-serif}
 footer.bottom{background:var(--bg);padding:40px var(--px) 36px;color:var(--muted);font-size:.95rem}
-
 .stick{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:12px;padding:calc(10px + env(safe-area-inset-top,0px)) var(--px) 10px;background:var(--bg);background:color-mix(in srgb,var(--bg) 90%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 6px 24px rgba(0,0,0,.08);transform:translateY(-110%);visibility:hidden;transition:transform .45s cubic-bezier(.2,.7,.2,1),visibility 0s .45s}
 .stick.on{transform:none;visibility:visible;transition:transform .45s cubic-bezier(.2,.7,.2,1),visibility 0s}
 .stick img{width:40px;height:40px;border-radius:50%;object-fit:cover;display:block}
@@ -195,7 +188,6 @@ header.top nav a[aria-current="true"]{color:var(--ink);text-decoration:underline
 .stick .btn.sm{padding:5px 12px;font-size:.8rem}
 .stick .who span{color:var(--muted);font-size:.85rem}
 @media (max-width:480px){.stick .who span{display:none}}
-
 /* Анимации */
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .hero>*{animation:up .8s cubic-bezier(.2,.7,.2,1) both}
@@ -204,7 +196,6 @@ header.top nav a[aria-current="true"]{color:var(--ink);text-decoration:underline
 header.top{animation:up .6s ease both}
 .rv{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
 .rv.in{opacity:1;transform:none}
-
 /* Тема 1990 */
 :root[data-theme="1990"] body{font-size:18px;line-height:1.5}
 :root[data-theme="1990"] .stick{box-shadow:none;border-bottom:2px groove #808080}
@@ -225,13 +216,32 @@ header.top{animation:up .6s ease both}
 :root[data-theme="1990"] #themes button[aria-pressed="true"]{background:#000080;color:#fff}
 :root[data-theme="1990"] .case figure,:root[data-theme="1990"] .gallery img,:root[data-theme="1990"] .photo{border:2px inset #808080}
 :root[data-theme="1990"] .thanks{color:#000080}
-
 @media (max-width:820px){
-  .hero{grid-template-columns:1fr;gap:32px;padding:32px var(--px) 48px}
-  .hero-left{display:grid;grid-template-columns:110px 1fr;gap:20px;align-items:center}
-  .hero-left .photo{grid-row:1/3;max-width:110px}
-  .hero-left h1{margin:0 0 6px;font-size:1.8rem}
-  .hero-left .lead{font-size:1rem}
+  .hero{
+    grid-template-columns:1fr;
+    gap:28px;
+    padding:32px var(--px) 48px;
+  }
+  .hero-left{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:16px 20px;
+    align-items:center;
+  }
+  .hero-left .photo{
+    grid-row:1 / 2;
+    max-width:120px;
+  }
+  .hero-left .btn.main{
+    grid-column:1 / -1;
+    margin-top:4px;
+  }
+  .hero-right h1{
+    font-size:1.9rem;
+  }
+  .hero-right .lead{
+    font-size:1.05rem;
+  }
   .cols,.small,.skills,.contact{grid-template-columns:1fr;gap:32px}
   .gallery{grid-template-columns:repeat(2,1fr)}
   header.top{flex-direction:column;align-items:flex-start}
@@ -279,7 +289,6 @@ header.top{animation:up .6s ease both}
   </nav>
   <a class="btn main sm" href="resume.pdf" download="Резюме_Козуб_UIUX_дизайнер.pdf">Скачать резюме</a>
 </div>
-
 <header class="top">
   <nav aria-label="Разделы">
     <a href="#about">О себе</a>
@@ -294,33 +303,18 @@ header.top{animation:up .6s ease both}
     <button type="button" data-t="1990">1990</button>
   </div>
 </header>
-
 <main>
 <div class="hero">
   <div class="hero-left">
     <img class="photo" src="https://kozubdesign.github.io/portfolio/photo.jpg" alt="Денис Козуб" width="260" height="260">
-    <h1>Козуб Денис</h1>
-    <p class="lead">UI/UX-дизайнер с 17-летним опытом.<br>Делаю сайты и интерфейсы, которые приносят заявки.</p>
-  </div>
-
-  <div class="hero-right">
-    <dl class="spec">
-      <div>
-        <dt>Опыт</dt>
-        <dd>17 лет в вебе, ведущий дизайнер интерфейсов</dd>
-      </div>
-      <div>
-        <dt>Локация</dt>
-        <dd>Новосибирск, м. Берёзовая роща</dd>
-      </div>
-      <div>
-        <dt>Формат</dt>
-        <dd>штат / проекты</dd>
-      </div>
-    </dl>
-
     <a class="btn main" href="resume.pdf" download="Резюме_Козуб_UIUX_дизайнер.pdf">Скачать резюме</a>
-
+  </div>
+  <div class="hero-right">
+    <h1>Козуб Денис</h1>
+    <p class="lead">
+      UI/UX-дизайнер с 17-летним опытом.<br>
+      Делаю сайты и интерфейсы, которые приносят заявки.
+    </p>
     <div class="hero-contacts">
       <a href="tel:+79833162526">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -337,7 +331,6 @@ header.top{animation:up .6s ease both}
     </div>
   </div>
 </div>
-
 <section class="about cols" id="about">
   <h2>О себе</h2>
   <div>
@@ -346,7 +339,6 @@ header.top{animation:up .6s ease both}
     <p>Живу в Новосибирске, женат, есть дочь. В свободное время — гитара, D&D и аналоговая электроника.</p>
   </div>
 </section>
-
 <section id="projects">
   <div class="band">
     <h2>Проекты</h2>
@@ -365,7 +357,6 @@ header.top{animation:up .6s ease both}
       </dl>
     </article>
   </div>
-
   <div class="band">
     <article class="case">
       <div class="head">
@@ -382,7 +373,6 @@ header.top{animation:up .6s ease both}
       </dl>
     </article>
   </div>
-
   <div class="band">
     <article class="case">
       <div class="head">
@@ -399,7 +389,6 @@ header.top{animation:up .6s ease both}
       </dl>
     </article>
   </div>
-
   <div class="band">
     <div class="small">
       <article class="case">
@@ -429,7 +418,6 @@ header.top{animation:up .6s ease both}
     </div>
   </div>
 </section>
-
 <section id="experience">
   <h2>Опыт работы</h2>
   <ol class="jobs">
@@ -438,7 +426,6 @@ header.top{animation:up .6s ease both}
     <li><span class="years">2006 — 2009</span><span><strong>Проектировщик, «СК Нефтепродукт»</strong>Строительное проектирование.</span></li>
   </ol>
 </section>
-
 <section id="skills">
   <h2>Навыки</h2>
   <div class="skills">
@@ -480,7 +467,6 @@ header.top{animation:up .6s ease both}
     </div>
   </div>
 </section>
-
 <section class="contact" id="contact">
   <div>
     <h2>Мои контакты</h2>
@@ -500,11 +486,9 @@ header.top{animation:up .6s ease both}
   </div>
 </section>
 </main>
-
 <footer class="bottom">
   <p class="copy">© 2026 Денис Козуб</p>
 </footer>
-
 <script>
 (function(){
   var root=document.documentElement,btns=document.querySelectorAll('#themes button');
@@ -517,7 +501,6 @@ header.top{animation:up .6s ease both}
     mark();
   })});
   mark();
-
   window.addEventListener('beforeprint',function(){
     document.querySelectorAll('img[loading="lazy"]').forEach(function(i){i.loading='eager'});
     document.querySelectorAll('.rv').forEach(function(e){e.classList.add('in')});
@@ -533,7 +516,6 @@ header.top{animation:up .6s ease both}
   }
   function chk(){st.classList.toggle('on',window.scrollY>360);spy()}
   window.addEventListener('scroll',chk,{passive:true});chk();
-
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   var items=document.querySelectorAll('main section>h2,.band>h2,.about>div,.jobs li,.skills>div,.case,.gallery img,.contact>*');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){
