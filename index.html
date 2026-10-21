@@ -44,7 +44,7 @@ header.top nav a:hover{color:var(--ink)}
   color:#FFFFFF;
   border-radius:20px;
   display:grid;
-  grid-template-columns:1fr 480px;
+  grid-template-columns:1fr 520px;
   gap:0;
   align-items:stretch;
   padding:0;            /* отступов у карточки нет — они перенесены в .hero-left */
@@ -89,9 +89,18 @@ header.top nav a:hover{color:var(--ink)}
 .hero-contacts svg{color:#FFFFFF;flex-shrink:0}
 
 .hero-right{
-  position:relative;
+  position:relative;    /* контейнер для абсолютной картинки */
   min-height:360px;
-  overflow:hidden; /* не даёт увеличенному фото заходить на текст */
+  overflow:hidden;      /* не даёт увеличенному фото заходить на текст */
+}
+.hero-right::before{    /* плавный переход фото в фон карточки */
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:140px;
+  background:linear-gradient(to right,#090808,transparent);
+  z-index:1;
+  pointer-events:none;
 }
 .photo{
   position:absolute;    /* вне потока: высоту задаёт левая колонка */
@@ -99,9 +108,9 @@ header.top nav a:hover{color:var(--ink)}
   width:100%;
   height:100%;
   object-fit:cover;
-  transform:scale(1.15);
-  transform-origin:right top;
-  object-position:right top;
+  object-position:right bottom;
+  transform:scale(1.08);
+  transform-origin:right bottom;
   display:block;
   border-radius:0;
 }
@@ -197,7 +206,8 @@ header.top nav a[aria-current="true"]{color:var(--ink);text-decoration:underline
   }
   .hero-left{padding:32px 24px}
   .hero-right{min-height:320px}
-  .photo{max-width:none}
+  .photo{max-width:none;transform:none}
+  .hero-right::before{display:none}
   .cols,.small,.skills,.contact{grid-template-columns:1fr;gap:32px}
   .gallery{grid-template-columns:repeat(2,1fr)}
   header.top nav{flex-wrap:wrap;gap:8px 18px}
@@ -225,7 +235,8 @@ header.top nav a[aria-current="true"]{color:var(--ink);text-decoration:underline
   .hero-card h1{color:#000!important;font-size:22pt}
   .hero-card .lead,.hero-card .hero-contacts a{color:#333!important}
   .hero-right{position:static;min-height:0}
-  .photo{position:static;height:auto;max-width:150px}
+  .photo{position:static;height:auto;max-width:150px;transform:none}
+  .hero-right::before{display:none}
   .case,.jobs li,.skills>div,.gallery img,.small .case{break-inside:avoid}
   h2,h3{break-after:avoid}
   .case figure img{transform:none!important}
