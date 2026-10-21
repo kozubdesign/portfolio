@@ -50,26 +50,77 @@ header.top nav a:hover{color:var(--ink)}
 #themes button:hover{color:var(--accent)}
 #themes button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 
-.hero{display:grid;grid-template-columns:260px 1fr;gap:28px 48px;padding:56px var(--px) 72px;align-items:start}
-.hero-photo{grid-column:1;grid-row:1/3}
-.hero-head{grid-column:2;grid-row:1}
-.hero-info{grid-column:2;grid-row:2}
-.hero h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1;letter-spacing:-.035em;font-weight:700;margin:0 0 14px}
-.photo{display:block;width:100%;max-width:260px;height:auto;border-radius:var(--radius);margin:0 0 24px}
-.hero .lead{font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.4;max-width:34ch;margin:0;color:var(--muted)}
-.actions{display:flex;flex-wrap:wrap;gap:12px}
+/* ===== HERO Variant D ===== */
+.hero{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:48px 64px;
+  padding:56px var(--px) 72px;
+  align-items:start;
+}
+.hero-left h1{
+  font-size:clamp(2rem,4.5vw,3.1rem);
+  line-height:1.05;
+  letter-spacing:-.035em;
+  font-weight:700;
+  margin:20px 0 12px;
+}
+.hero-left .lead{
+  font-size:1.15rem;
+  line-height:1.45;
+  color:var(--muted);
+  margin:0;
+  max-width:28ch;
+}
+.photo{
+  display:block;
+  width:100%;
+  max-width:260px;
+  height:auto;
+  border-radius:var(--radius);
+}
+.hero-right{
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+  padding-top:8px;
+}
+.hero-right .spec{margin:0}
+.hero-right .spec div{
+  display:grid;
+  grid-template-columns:7rem 1fr;
+  gap:16px;
+  padding:11px 0;
+  border-bottom:1px solid var(--line);
+}
+.hero-right .spec div:first-child{border-top:1px solid var(--line)}
+.hero-right .spec dt{color:var(--muted);font-size:.95rem}
+.hero-right .spec dd{margin:0;line-height:1.5}
+.hero-right .btn.main{
+  align-self:stretch;
+  text-align:center;
+  padding:16px 24px;
+  font-size:1.1rem;
+}
+.hero-contacts{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.hero-contacts a{
+  display:inline-flex;
+  align-items:center;
+  gap:.65em;
+  text-decoration:none;
+  color:var(--ink);
+}
+.hero-contacts a:hover{color:var(--accent)}
+.hero-contacts svg{color:var(--accent2);flex-shrink:0}
+
 .btn{display:inline-block;padding:12px 22px;border-radius:var(--radius);border:1.5px solid var(--ink);text-decoration:none;font-weight:500;transition:transform .2s,filter .2s,border-color .2s}
 .btn.sm{padding:7px 16px;font-size:.9rem}
-.hero .actions{justify-content:flex-end;max-width:38rem;margin-top:20px}
 .btn.main{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .btn.main:hover{color:var(--accent-ink);filter:brightness(1.1);transform:translateY(-2px)}
-dl.spec{margin:0;max-width:38rem}
-dl.spec div{display:grid;grid-template-columns:7rem 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
-dl.spec dt{color:var(--muted);font-size:.95rem}
-dl.spec dd{margin:0;line-height:1.5}
-dl.spec dd.cont{display:flex;flex-direction:column;gap:4px}
-dl.spec dd.cont a{display:inline-flex;align-items:center;gap:.65em;text-decoration:none;align-self:flex-start;transition:color .2s}
-dl.spec dd.cont svg{flex:none;color:var(--accent2)}
 
 section{padding:72px var(--px);transition:background-color .4s ease}
 #about,#skills{background:var(--bg2)}
@@ -80,8 +131,7 @@ h2{font-size:2.2rem;line-height:1.15;letter-spacing:-.02em;margin:0 0 28px;font-
 h3{font-size:1.35rem;line-height:1.25;margin:0;font-weight:700}
 .cols{display:grid;grid-template-columns:1fr 2fr;gap:56px}
 .cols>h2{margin:0}
-.about p,.offwork p{margin:0 0 1em;max-width:62ch}
-
+.about p{margin:0 0 1em;max-width:62ch}
 .link{display:inline-flex;align-items:center;gap:.45em;padding:5px 14px;border:1px solid var(--line);border-radius:var(--pill);text-decoration:none;font-size:.92rem;font-weight:500;white-space:nowrap;transition:background .15s,color .15s,border-color .15s}
 .link::after{content:"";width:.8em;height:.8em;background:currentColor;
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 3h8v8M13 3 3 13' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
@@ -89,7 +139,6 @@ h3{font-size:1.35rem;line-height:1.25;margin:0;font-weight:700}
   transition:transform .15s}
 .link:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .link:hover::after{transform:translate(2px,-2px)}
-
 .case{padding:0}
 .case .head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 24px;margin-bottom:6px}
 .case h3{font-size:1.9rem;line-height:1.15;letter-spacing:-.02em}
@@ -107,11 +156,9 @@ h3{font-size:1.35rem;line-height:1.25;margin:0;font-weight:700}
 .small{display:grid;grid-template-columns:1fr 1fr;gap:56px}
 .small .case{padding:0}
 .small .case p{margin:0}
-
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;align-items:start}
 .gallery img{display:block;width:100%;height:auto;border-radius:var(--radius);background:var(--line);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
 .gallery img:hover{transform:translateY(-4px)}
-
 ol.jobs{list-style:none;margin:0;padding:0}
 ol.jobs li{display:grid;grid-template-columns:9rem 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
 ol.jobs .years{color:var(--muted)}
@@ -120,12 +167,11 @@ ol.jobs strong{display:block}
 .skills h3{font-size:1.1rem;margin-bottom:10px}
 .skills ul{margin:0;padding:0;list-style:none}
 .skills li{padding:7px 0;border-top:1px solid var(--line)}
-
 .contact{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:stretch}
 .contact ul{list-style:none;margin:0;padding:0;font-size:1.15rem}
 .contact li{padding:8px 0}
 .cta{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:24px}
-.cta .btn{display:inline-flex;align-items:center;gap:.65em;padding:16px 30px;font-size:1.15rem;box-shadow:0 10px 28px rgba(37,99,235,.35);box-shadow:0 10px 28px color-mix(in srgb,var(--accent) 38%,transparent)}
+.cta .btn{display:inline-flex;align-items:center;gap:.65em;padding:16px 30px;font-size:1.15rem;box-shadow:0 10px 28px color-mix(in srgb,var(--accent) 38%,transparent)}
 .cta .btn svg{transition:transform .25s}
 .cta .btn:hover{transform:translateY(-3px)}
 .cta .btn:hover svg{transform:translate(3px,-3px)}
@@ -154,8 +200,7 @@ header.top nav a[aria-current="true"]{color:var(--ink);text-decoration:underline
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .hero>*{animation:up .8s cubic-bezier(.2,.7,.2,1) both}
 .hero>div:first-child{animation-delay:.05s}
-.hero>div:nth-child(2){animation-delay:.25s}
-.hero>div:last-child{animation-delay:.4s}
+.hero>div:last-child{animation-delay:.25s}
 header.top{animation:up .6s ease both}
 .rv{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
 .rv.in{opacity:1;transform:none}
@@ -181,16 +226,14 @@ header.top{animation:up .6s ease both}
 :root[data-theme="1990"] .case figure,:root[data-theme="1990"] .gallery img,:root[data-theme="1990"] .photo{border:2px inset #808080}
 :root[data-theme="1990"] .thanks{color:#000080}
 
-@media (min-width:821px){.hero .lead{max-width:none;white-space:nowrap;font-size:clamp(.85rem,calc((100vw - 356px)/30),1.4rem)}}
 @media (max-width:820px){
-  .hero,.cols,.small,.skills,.contact{grid-template-columns:1fr;gap:32px}
+  .hero{grid-template-columns:1fr;gap:32px;padding:32px var(--px) 48px}
+  .hero-left{display:grid;grid-template-columns:110px 1fr;gap:20px;align-items:center}
+  .hero-left .photo{grid-row:1/3;max-width:110px}
+  .hero-left h1{margin:0 0 6px;font-size:1.8rem}
+  .hero-left .lead{font-size:1rem}
+  .cols,.small,.skills,.contact{grid-template-columns:1fr;gap:32px}
   .gallery{grid-template-columns:repeat(2,1fr)}
-  .hero{padding:32px var(--px) 48px}
-  .hero{grid-template-columns:96px 1fr;gap:24px}
-  .hero-head,.hero-photo{align-self:center}
-  .hero-photo{grid-row:1}
-  .hero-info{grid-column:1/-1}
-  .photo{max-width:100%}
   header.top{flex-direction:column;align-items:flex-start}
   header.top nav{flex-wrap:wrap;gap:8px 18px}
   .case dl div,ol.jobs li{grid-template-columns:1fr;gap:2px}
@@ -204,19 +247,17 @@ header.top{animation:up .6s ease both}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .rv{opacity:1;transform:none}
 }
-
 /* Печать */
 @page{margin:14mm}
 @media print{
   :root,:root[data-theme]{--bg:#fff;--bg2:#fff;--ink:#000;--muted:#444;--line:#ccc;--accent:#2563EB;--accent2:#0D9488;--px:0px;padding:0;color-scheme:light}
   body{background:#fff;color:#000;font-size:10.5pt;line-height:1.45}
-  .stick,header.top,.actions,.cta,footer.bottom{display:none!important}
+  .stick,header.top,.cta,footer.bottom{display:none!important}
   .rv,.hero>*,.hero>*>*{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
   .hero,main>section,.band{background:#fff!important;padding:16pt 0!important;border:0}
   .hero{grid-template-columns:150px 1fr;gap:16pt 24pt;padding-top:0!important}
   .photo{max-width:150px}
-  .hero h1{font-size:30pt}
-  .hero .lead{white-space:normal;font-size:12pt;max-width:none}
+  .hero-left h1{font-size:22pt}
   .case,.jobs li,.skills>div,.gallery img,.small .case{break-inside:avoid}
   h2,h3{break-after:avoid}
   .case figure img{transform:none!important}
@@ -256,118 +297,137 @@ header.top{animation:up .6s ease both}
 
 <main>
 <div class="hero">
-  <div class="hero-photo">
+  <div class="hero-left">
     <img class="photo" src="https://kozubdesign.github.io/portfolio/photo.jpg" alt="Денис Козуб" width="260" height="260">
-  </div>
-  <div class="hero-head">
     <h1>Козуб Денис</h1>
     <p class="lead">UI/UX-дизайнер с 17-летним опытом.<br>Делаю сайты и интерфейсы, которые приносят заявки.</p>
   </div>
-  <div class="hero-info">
-    <dl class="spec" aria-label="Коротко обо мне">
-      <div><dt>Опыт</dt><dd>17 лет в вебе, ведущий дизайнер интерфейсов</dd></div>
-      <div><dt>Локация</dt><dd>Новосибирск, м. Берёзовая роща</dd></div>
-      <div><dt>Формат</dt><dd>штат / проекты</dd></div>
-      <div><dt>Контакты</dt><dd class="cont"><a href="tel:+79833162526"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+7-983-316-25-26</a><a href="mailto:kozubdesign@gmail.com"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>kozubdesign@gmail.com</a><a href="https://t.me/kozubdesign" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>@kozubdesign</a></dd></div>
+
+  <div class="hero-right">
+    <dl class="spec">
+      <div>
+        <dt>Опыт</dt>
+        <dd>17 лет в вебе, ведущий дизайнер интерфейсов</dd>
+      </div>
+      <div>
+        <dt>Локация</dt>
+        <dd>Новосибирск, м. Берёзовая роща</dd>
+      </div>
+      <div>
+        <dt>Формат</dt>
+        <dd>штат / проекты</dd>
+      </div>
     </dl>
-    <div class="actions">
-      <a class="btn main sm" href="resume.pdf" download="Резюме_Козуб_UIUX_дизайнер.pdf">Скачать резюме</a>
+
+    <a class="btn main" href="resume.pdf" download="Резюме_Козуб_UIUX_дизайнер.pdf">Скачать резюме</a>
+
+    <div class="hero-contacts">
+      <a href="tel:+79833162526">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +7-983-316-25-26
+      </a>
+      <a href="mailto:kozubdesign@gmail.com">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        kozubdesign@gmail.com
+      </a>
+      <a href="https://t.me/kozubdesign" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        @kozubdesign
+      </a>
     </div>
   </div>
 </div>
+
 <section class="about cols" id="about">
   <h2>О себе</h2>
   <div>
-<p>Делаю сайты и интерфейсы для производителей оборудования и сервисов: понятные, с продуманной структурой и удобные в работе.</p>
-<p>В вебе с 2009 года. До этого получил высшее строительное образование (красный диплом) и два года работал проектировщиком. Начинал в полиграфии и видео.</p>
-<p>Живу в Новосибирске, женат, есть дочь. В свободное время — гитара, D&D и аналоговая электроника.</p>
+    <p>Делаю сайты и интерфейсы для производителей оборудования и сервисов: понятные, с продуманной структурой и удобные в работе.</p>
+    <p>В вебе с 2009 года. До этого получил высшее строительное образование (красный диплом) и два года работал проектировщиком. Начинал в полиграфии и видео.</p>
+    <p>Живу в Новосибирске, женат, есть дочь. В свободное время — гитара, D&D и аналоговая электроника.</p>
   </div>
 </section>
 
-
 <section id="projects">
-<div class="band">
-  <h2>Проекты</h2>
-
-  <article class="case">
-    <div class="head">
-      <h3>Редизайн сайта компании «LEDsi»</h3>
-      <a class="link" href="https://led-si.com" target="_blank" rel="noopener noreferrer">led-si.com</a>
-    </div>
-    <p class="sub">Производитель LED-экранов, Новосибирск</p>
-    <figure><img src="https://kozubdesign.github.io/portfolio/project-ledsi.jpg" alt="Главная страница сайта led-si.com" loading="lazy"></figure>
-    <dl>
-      <div><dt>Задача</dt><dd>Старый сайт устарел и работал на собственном движке. Нужно было полностью переработать дизайн и путь пользователя, добавить обширное портфолио с кейсами и видео, а также конфигуратор, упрощающий оформление заявок.</dd></div>
-      <div><dt>Моя роль</dt><dd>Ведущий дизайнер: структура, прототип, дизайн, конфигуратор. Работал в команде с разработчиками, маркетологами, копирайтером и 3D-дизайнером.</dd></div>
-      <div><dt>Решение</dt><dd>Перестроил логику сайта: посетитель сразу понимает, кто мы и чем занимаемся. Конфигуратор — одна из работ в проекте: он позволяет подобрать экран и оформить заказ за несколько шагов.</dd></div>
-      <div><dt>Результат</dt><dd>Обновлённый сайт и конфигуратор стабильно генерируют целевые заявки и стали основным каналом привлечения клиентов.</dd></div>
-    </dl>
-  </article>
-</div>
-
-<div class="band">
-  <article class="case">
-    <div class="head">
-      <h3>Сайт и конфигуратор сети компании «СТ-Проект»</h3>
-      <a class="link" href="https://network-technologies.ru" target="_blank" rel="noopener noreferrer">network-technologies.ru</a>
-    </div>
-    <p class="sub">Официальный дилер Eltex, Новосибирск</p>
-    <figure><img src="https://kozubdesign.github.io/portfolio/project-network.jpg" alt="Сайт network-technologies.ru: конфигуратор сети и подбор аналогов" loading="lazy"></figure>
-    <dl>
-      <div><dt>Задача</dt><dd>Сделать с нуля сайт дилера, который отвечает на реальные вопросы клиентов, а не повторяет каталог производителя.</dd></div>
-      <div><dt>Моя роль</dt><dd>Исследование болей клиентов, структура, прототип, дизайн. Работал в команде с разработчиками, маркетологами, копирайтером и 3D-дизайнером.</dd></div>
-      <div><dt>Решение</dt><dd>Сайт, построенный на потребностях клиентов, конфигуратор сети и сервис подбора аналогов импортного оборудования, который стал особенно востребованным после 2022 года.</dd></div>
-      <div><dt>Результат</dt><dd>Сайт вошёл в топ-5 дилеров Eltex по позициям в поиске при минимальных затратах на рекламу и продолжает приносить заявки.</dd></div>
-    </dl>
-  </article>
-</div>
-
-<div class="band">
-  <article class="case">
-    <div class="head">
-      <h3>Сайт и микро-лендинги компании «KioskLab»</h3>
-      <a class="link" href="https://kiosk-lab.com" target="_blank" rel="noopener noreferrer">kiosk-lab.com</a>
-    </div>
-    <p class="sub">Производитель киосков самообслуживания, постаматов и фандоматов, Новосибирск</p>
-    <figure><img src="https://kozubdesign.github.io/portfolio/project-kiosk.jpg" alt="Сайт kiosk-lab.com" loading="lazy"></figure>
-    <dl>
-      <div><dt>Задача</dt><dd>Запустить с нуля сайт, ориентированный на поисковый трафик, без большого рекламного бюджета.</dd></div>
-      <div><dt>Моя роль</dt><dd>Прототип, дизайн и структура сайта целиком. Над SEO и разработкой работала та же команда: разработчики, маркетологи, копирайтер и 3D-дизайнер.</dd></div>
-      <div><dt>Решение</dt><dd class="one">Основной сайт плюс микро-лендинги под отдельные типы продукции и поисковые запросы.</dd></div>
-      <div><dt>Результат</dt><dd class="one">Сайт стабильно приносит заявки из поиска без вложений в рекламу, только за счёт SEO.</dd></div>
-    </dl>
-  </article>
-</div>
-
-<div class="band">
-  <div class="small">
+  <div class="band">
+    <h2>Проекты</h2>
     <article class="case">
       <div class="head">
-        <h3>Сайт сервиса доступа к LED-экранам</h3>
-        <a class="link" href="https://admaster.io/" target="_blank" rel="noopener noreferrer">admaster.io</a>
+        <h3>Редизайн сайта компании «LEDsi»</h3>
+        <a class="link" href="https://led-si.com" target="_blank" rel="noopener noreferrer">led-si.com</a>
       </div>
-      <figure><img src="https://kozubdesign.github.io/portfolio/project-admaster.jpg" alt="Интерфейс сервиса admaster.io" loading="lazy"></figure>
-      <p>Дизайн дашборда, сайта и интерфейса сервиса. После редизайна сервис стал заметно удобнее и понятнее для пользователей. Проект развивается, модули продолжают добавляться.</p>
-    </article>
-    <article class="case">
-      <div class="head">
-        <h3>Видеоконтент для компании «LEDsi»</h3>
-        <a class="link" href="https://www.youtube.com/@LEDsiSmartInnovations/videos" target="_blank" rel="noopener noreferrer">Канал на YouTube</a>
-      </div>
-      <figure><img src="https://kozubdesign.github.io/portfolio/project-video.jpg" alt="Канал LEDsi Smart Innovations на YouTube" loading="lazy"></figure>
-      <p>Съёмка и монтаж роликов о продукции компании для YouTube-канала LEDsi Smart Innovations.</p>
+      <p class="sub">Производитель LED-экранов, Новосибирск</p>
+      <figure><img src="https://kozubdesign.github.io/portfolio/project-ledsi.jpg" alt="Главная страница сайта led-si.com" loading="lazy"></figure>
+      <dl>
+        <div><dt>Задача</dt><dd>Старый сайт устарел и работал на собственном движке. Нужно было полностью переработать дизайн и путь пользователя, добавить обширное портфолио с кейсами и видео, а также конфигуратор, упрощающий оформление заявок.</dd></div>
+        <div><dt>Моя роль</dt><dd>Ведущий дизайнер: структура, прототип, дизайн, конфигуратор. Работал в команде с разработчиками, маркетологами, копирайтером и 3D-дизайнером.</dd></div>
+        <div><dt>Решение</dt><dd>Перестроил логику сайта: посетитель сразу понимает, кто мы и чем занимаемся. Конфигуратор — одна из работ в проекте: он позволяет подобрать экран и оформить заказ за несколько шагов.</dd></div>
+        <div><dt>Результат</dt><dd>Обновлённый сайт и конфигуратор стабильно генерируют целевые заявки и стали основным каналом привлечения клиентов.</dd></div>
+      </dl>
     </article>
   </div>
 
-  <div class="gallery">
-    <img src="https://kozubdesign.github.io/portfolio/gallery-01.jpg" alt="Пример работы 1" loading="lazy">
-    <img src="https://kozubdesign.github.io/portfolio/gallery-02.jpg" alt="Пример работы 2" loading="lazy">
-    <img src="https://kozubdesign.github.io/portfolio/gallery-03.jpg" alt="Пример работы 3" loading="lazy">
-    <img src="https://kozubdesign.github.io/portfolio/gallery-04.jpg" alt="Пример работы 4" loading="lazy">
-    <img src="https://kozubdesign.github.io/portfolio/gallery-05.jpg" alt="Пример работы 5" loading="lazy">
-    <img src="https://kozubdesign.github.io/portfolio/gallery-06.jpg" alt="Пример работы 6" loading="lazy">
+  <div class="band">
+    <article class="case">
+      <div class="head">
+        <h3>Сайт и конфигуратор сети компании «СТ-Проект»</h3>
+        <a class="link" href="https://network-technologies.ru" target="_blank" rel="noopener noreferrer">network-technologies.ru</a>
+      </div>
+      <p class="sub">Официальный дилер Eltex, Новосибирск</p>
+      <figure><img src="https://kozubdesign.github.io/portfolio/project-network.jpg" alt="Сайт network-technologies.ru: конфигуратор сети и подбор аналогов" loading="lazy"></figure>
+      <dl>
+        <div><dt>Задача</dt><dd>Сделать с нуля сайт дилера, который отвечает на реальные вопросы клиентов, а не повторяет каталог производителя.</dd></div>
+        <div><dt>Моя роль</dt><dd>Исследование болей клиентов, структура, прототип, дизайн. Работал в команде с разработчиками, маркетологами, копирайтером и 3D-дизайнером.</dd></div>
+        <div><dt>Решение</dt><dd>Сайт, построенный на потребностях клиентов, конфигуратор сети и сервис подбора аналогов импортного оборудования, который стал особенно востребованным после 2022 года.</dd></div>
+        <div><dt>Результат</dt><dd>Сайт вошёл в топ-5 дилеров Eltex по позициям в поиске при минимальных затратах на рекламу и продолжает приносить заявки.</dd></div>
+      </dl>
+    </article>
   </div>
-</div>
+
+  <div class="band">
+    <article class="case">
+      <div class="head">
+        <h3>Сайт и микро-лендинги компании «KioskLab»</h3>
+        <a class="link" href="https://kiosk-lab.com" target="_blank" rel="noopener noreferrer">kiosk-lab.com</a>
+      </div>
+      <p class="sub">Производитель киосков самообслуживания, постаматов и фандоматов, Новосибирск</p>
+      <figure><img src="https://kozubdesign.github.io/portfolio/project-kiosk.jpg" alt="Сайт kiosk-lab.com" loading="lazy"></figure>
+      <dl>
+        <div><dt>Задача</dt><dd>Запустить с нуля сайт, ориентированный на поисковый трафик, без большого рекламного бюджета.</dd></div>
+        <div><dt>Моя роль</dt><dd>Прототип, дизайн и структура сайта целиком. Над SEO и разработкой работала та же команда: разработчики, маркетологи, копирайтер и 3D-дизайнер.</dd></div>
+        <div><dt>Решение</dt><dd class="one">Основной сайт плюс микро-лендинги под отдельные типы продукции и поисковые запросы.</dd></div>
+        <div><dt>Результат</dt><dd class="one">Сайт стабильно приносит заявки из поиска без вложений в рекламу, только за счёт SEO.</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <div class="band">
+    <div class="small">
+      <article class="case">
+        <div class="head">
+          <h3>Сайт сервиса доступа к LED-экранам</h3>
+          <a class="link" href="https://admaster.io/" target="_blank" rel="noopener noreferrer">admaster.io</a>
+        </div>
+        <figure><img src="https://kozubdesign.github.io/portfolio/project-admaster.jpg" alt="Интерфейс сервиса admaster.io" loading="lazy"></figure>
+        <p>Дизайн дашборда, сайта и интерфейса сервиса. После редизайна сервис стал заметно удобнее и понятнее для пользователей. Проект развивается, модули продолжают добавляться.</p>
+      </article>
+      <article class="case">
+        <div class="head">
+          <h3>Видеоконтент для компании «LEDsi»</h3>
+          <a class="link" href="https://www.youtube.com/@LEDsiSmartInnovations/videos" target="_blank" rel="noopener noreferrer">Канал на YouTube</a>
+        </div>
+        <figure><img src="https://kozubdesign.github.io/portfolio/project-video.jpg" alt="Канал LEDsi Smart Innovations на YouTube" loading="lazy"></figure>
+        <p>Съёмка и монтаж роликов о продукции компании для YouTube-канала LEDsi Smart Innovations.</p>
+      </article>
+    </div>
+    <div class="gallery">
+      <img src="https://kozubdesign.github.io/portfolio/gallery-01.jpg" alt="Пример работы 1" loading="lazy">
+      <img src="https://kozubdesign.github.io/portfolio/gallery-02.jpg" alt="Пример работы 2" loading="lazy">
+      <img src="https://kozubdesign.github.io/portfolio/gallery-03.jpg" alt="Пример работы 3" loading="lazy">
+      <img src="https://kozubdesign.github.io/portfolio/gallery-04.jpg" alt="Пример работы 4" loading="lazy">
+      <img src="https://kozubdesign.github.io/portfolio/gallery-05.jpg" alt="Пример работы 5" loading="lazy">
+      <img src="https://kozubdesign.github.io/portfolio/gallery-06.jpg" alt="Пример работы 6" loading="lazy">
+    </div>
+  </div>
 </section>
 
 <section id="experience">
@@ -433,7 +493,10 @@ header.top{animation:up .6s ease both}
   </div>
   <div class="cta">
     <p class="thanks">Открыт для<br>новых задач</p>
-    <a class="btn main" href="https://t.me/kozubdesign" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>Написать в Telegram</a>
+    <a class="btn main" href="https://t.me/kozubdesign" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+      Написать в Telegram
+    </a>
   </div>
 </section>
 </main>
@@ -471,13 +534,12 @@ header.top{animation:up .6s ease both}
   function chk(){st.classList.toggle('on',window.scrollY>360);spy()}
   window.addEventListener('scroll',chk,{passive:true});chk();
 
-  /* Плавное появление блоков при прокрутке */
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var items=document.querySelectorAll('main section>h2,.band>h2,.about>div,.jobs li,.skills>div,.case,.gallery img,.offwork>div,.contact>*');
+  var items=document.querySelectorAll('main section>h2,.band>h2,.about>div,.jobs li,.skills>div,.case,.gallery img,.contact>*');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){
     if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
   })},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-  items.forEach(function(el,i){
+  items.forEach(function(el){
     if(el.closest('.gallery')){el.style.setProperty('--d',(Array.prototype.indexOf.call(el.parentNode.children,el)%3)*.12+'s')}
     el.classList.add('rv');io.observe(el);
   });
