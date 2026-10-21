@@ -1,372 +1,493 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Денис Козуб — Веб-дизайнер</title>
-<script>
-(()=>{const d=document.documentElement;let t;
-try{t=localStorage.getItem("theme")}catch(e){}
-d.dataset.theme=t||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
-d.classList.add("js")})()
-</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Денис Козуб — UI/UX-дизайнер</title>
+<meta name="description" content="UI/UX-дизайнер из Новосибирска. Сайты и интерфейсы для производителей оборудования: от прототипа до запуска. Проекты, опыт, контакты.">
+<meta property="og:title" content="Денис Козуб — UI/UX-дизайнер">
+<meta property="og:description" content="Сайты и интерфейсы для производителей оборудования: от прототипа до запуска.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kozubdesign.github.io/portfolio/">
+<meta property="og:image" content="https://kozubdesign.github.io/portfolio/photo.jpg">
+<link rel="icon" type="image/jpeg" href="https://kozubdesign.github.io/portfolio/photo.jpg">
+<link rel="apple-touch-icon" href="https://kozubdesign.github.io/portfolio/photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400..700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff;--text:#1a1a1a;--muted:#555;--line:#e5e5e5;--light:#f4f4f4;--faint:#999;--dash:#ccc}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font:400 17px/1.58 "Google Sans","Helvetica Neue",Arial,sans-serif;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;transition:background-color .4s,color .4s}
-a{color:inherit;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .35s cubic-bezier(.2,.7,.2,1)}
-a:hover{background-size:100% 1px}
-p{margin-bottom:14px}
-section{margin-bottom:52px}
-h2{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:18px}
-h2.lg{font-size:1.15rem;text-transform:none;letter-spacing:-.015em;color:var(--text);margin-bottom:32px}
+:root{
+  --bg:#F8F9FA;--bg2:#EFF1F4;--ink:#1A1D21;--muted:#5F6368;--line:#E5E7EB;--accent:#2563EB;--accent2:#0D9488;--accent-ink:#fff;
+  --radius:6px;--pill:999px;--px:max(24px,calc((100% - 1040px)/2 + 24px));
+  --sans:'Google Sans','Product Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:var(--sans);
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme]){
+  --bg:#121416;--bg2:#1C1F23;--ink:#E8EAED;--muted:#9AA0A6;--line:#2D3136;--accent:#3B82F6;--accent2:#0D9488;--accent-ink:#0B1220;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121416;--bg2:#1C1F23;--ink:#E8EAED;--muted:#9AA0A6;--line:#2D3136;--accent:#3B82F6;--accent2:#0D9488;--accent-ink:#0B1220;color-scheme:dark}
+:root[data-theme="1990"]{
+  --bg:#C0C0C0;--bg2:#DCDCDC;--accent2:#000080;--ink:#000;--muted:#333;--line:#808080;--accent:#0000EE;--accent-ink:#fff;
+  --radius:0;--pill:0;
+  --sans:'Times New Roman',Times,serif;--mono:'Courier New',Courier,monospace;color-scheme:light}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--sans);-webkit-font-smoothing:antialiased;transition:background-color .4s ease,color .4s ease}
+button{font-family:inherit}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1.5px}
+a:hover{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-.page{position:relative;max-width:900px;margin:0 auto;padding:56px 32px 96px}
+header.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px var(--px)}
+header.top nav{display:flex;gap:22px;font-size:.95rem}
+header.top nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+header.top nav a:hover{color:var(--ink)}
+#themes{display:flex;border:1px solid var(--line);border-radius:var(--pill);overflow:hidden}
+#themes button{font-size:.85rem;background:none;color:var(--ink);border:0;padding:6px 12px;cursor:pointer;transition:background-color .25s,color .25s}
+#themes button:hover{color:var(--accent)}
+#themes button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
 
-/* Шапка */
-header{display:grid;grid-template-columns:220px 1fr;gap:44px;align-items:start;margin-bottom:56px;padding-bottom:40px;border-bottom:1px solid var(--line)}
-.photo{display:block;width:220px;height:220px;object-fit:cover;border-radius:8px;background:var(--light)}
-h1{font-size:2.2rem;font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:6px}
-.title{font-size:1.1rem;color:var(--muted);margin-bottom:24px}
-.contacts{display:flex;flex-direction:column;gap:9px;font-size:1.05rem;font-weight:500}
-.contacts>*{display:flex;align-items:center;gap:10px}
-.contacts svg{opacity:.7}
-.dot{width:9px;height:9px;border-radius:50%;background:#22c55e}
+.hero{display:grid;grid-template-columns:260px 1fr;gap:28px 48px;padding:56px var(--px) 72px;align-items:start}
+.hero-photo{grid-column:1;grid-row:1/3}
+.hero-head{grid-column:2;grid-row:1}
+.hero-info{grid-column:2;grid-row:2}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1;letter-spacing:-.035em;font-weight:700;margin:0 0 14px}
+.photo{display:block;width:100%;max-width:260px;height:auto;border-radius:var(--radius);margin:0 0 24px}
+.hero .lead{font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.4;max-width:34ch;margin:0;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:12px 22px;border-radius:var(--radius);border:1.5px solid var(--ink);text-decoration:none;font-weight:500;transition:transform .2s,filter .2s,border-color .2s}
+.btn.sm{padding:7px 16px;font-size:.9rem}
+.hero .actions{justify-content:flex-end;max-width:38rem;margin-top:20px}
+.btn.main{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.main:hover{color:var(--accent-ink);filter:brightness(1.1);transform:translateY(-2px)}
+dl.spec{margin:0;max-width:38rem}
+dl.spec div{display:grid;grid-template-columns:7rem 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+dl.spec dt{color:var(--muted);font-size:.95rem}
+dl.spec dd{margin:0;line-height:1.5}
+dl.spec dd.cont{display:flex;flex-direction:column;gap:4px}
+dl.spec dd.cont a{display:inline-flex;align-items:center;gap:.65em;text-decoration:none;align-self:flex-start;transition:color .2s}
+dl.spec dd.cont svg{flex:none;color:var(--accent2)}
 
-/* Опыт */
-.job{margin-bottom:22px}
-.job-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 16px;font-weight:500}
-.job-head span:last-child{font-weight:400}
-.job-company{margin-top:6px;padding-top:6px;border-top:1px dotted var(--dash)}
+section{padding:72px var(--px);transition:background-color .4s ease}
+#about,#skills,#contact{background:var(--bg2)}
+#projects{padding:0}
+.band{padding:72px var(--px);transition:background-color .4s ease}
+.band:nth-of-type(even){background:var(--bg2)}
+h2{font-size:2.2rem;line-height:1.15;letter-spacing:-.02em;margin:0 0 28px;font-weight:700}
+h3{font-size:1.35rem;line-height:1.25;margin:0;font-weight:700}
+.cols{display:grid;grid-template-columns:1fr 2fr;gap:56px}
+.cols>h2{margin:0}
+.about p,.offwork p{margin:0 0 1em;max-width:62ch}
 
-/* Навыки */
-.skills{display:grid;grid-template-columns:1fr 1fr;gap:28px 44px}
-.skills h3{font-size:.95rem;font-weight:600;margin-bottom:10px}
-.skills ul{list-style:none}
-.skills li{position:relative;padding-left:14px;margin-bottom:5px}
-.skills li::before{content:"–";position:absolute;left:0;color:var(--faint)}
-.skills li{break-inside:avoid}
+.link{display:inline-flex;align-items:center;gap:.45em;padding:5px 14px;border:1px solid var(--line);border-radius:var(--pill);text-decoration:none;font-size:.92rem;font-weight:500;white-space:nowrap;transition:background .15s,color .15s,border-color .15s}
+.link::after{content:"";width:.8em;height:.8em;background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 3h8v8M13 3 3 13' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 3h8v8M13 3 3 13' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+  transition:transform .15s}
+.link:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.link:hover::after{transform:translate(2px,-2px)}
 
-/* Проекты */
-.project{display:grid;grid-template-columns:280px 1fr;gap:36px;align-items:start;margin-bottom:56px;padding-bottom:48px;border-bottom:1px solid var(--line)}
-.project:last-child{margin:0;padding:0;border:0}
-.project-img,.gallery div{background:var(--light);border-radius:8px;overflow:hidden}
-.project-img{width:280px;height:190px}
-.project-img img,.gallery img{display:block;width:100%;height:100%;object-fit:cover}
-.project h3{font-size:1.2rem;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
-.meta{margin-bottom:14px}
-.project p{margin:0;line-height:1.6}
+.case{padding:0}
+.case .head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 24px;margin-bottom:6px}
+.case h3{font-size:1.9rem;line-height:1.15;letter-spacing:-.02em}
+.small .case h3{font-size:1.52rem}
+.case .sub{color:var(--muted);margin:0 0 20px}
+.case figure{margin:0 0 32px;aspect-ratio:16/9;background:var(--line);border-radius:var(--radius);overflow:hidden}
+.case figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.case:hover figure img{transform:scale(1.025)}
+.case dl{margin:0}
+.case dl div{display:grid;grid-template-columns:8rem 1fr;gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+.case dl div:first-child{border-top:0;padding-top:0}
+.case dt{color:var(--muted);font-size:.95rem}
+.case dd{margin:0;max-width:62ch}
+.case dd.one{max-width:none}
+.small{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.small .case{padding:0}
+.small .case p{margin:0}
 
-/* Галерея 3×2 */
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:52px}
-.gallery div{aspect-ratio:16/10}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;align-items:start}
+.gallery img{display:block;width:100%;height:auto;border-radius:var(--radius);background:var(--line);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.gallery img:hover{transform:translateY(-4px)}
 
-footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);font-size:.9rem;color:var(--faint)}
+ol.jobs{list-style:none;margin:0;padding:0}
+ol.jobs li{display:grid;grid-template-columns:9rem 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
+ol.jobs .years{color:var(--muted)}
+ol.jobs strong{display:block}
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:40px 56px}
+.skills h3{font-size:1.1rem;margin-bottom:10px}
+.skills ul{margin:0;padding:0;list-style:none}
+.skills li{padding:7px 0;border-top:1px solid var(--line)}
+
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:stretch}
+.contact ul{list-style:none;margin:0;padding:0;font-size:1.15rem}
+.contact li{padding:8px 0}
+.cta{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:24px}
+.cta .btn{display:inline-flex;align-items:center;gap:.65em;padding:16px 30px;font-size:1.15rem;box-shadow:0 10px 28px rgba(37,99,235,.35);box-shadow:0 10px 28px color-mix(in srgb,var(--accent) 38%,transparent)}
+.cta .btn svg{transition:transform .25s}
+.cta .btn:hover{transform:translateY(-3px)}
+.cta .btn:hover svg{transform:translate(3px,-3px)}
+:root[data-theme="1990"] .cta .btn{box-shadow:none}
+.thanks{margin:0;text-align:right;font-size:clamp(2.4rem,6vw,4.25rem);line-height:1.05;font-weight:700;letter-spacing:-.03em;color:var(--accent)}
+.copy{margin:0;font-size:1rem;font-family:Arial,'Helvetica Neue',Helvetica,system-ui,sans-serif}
+footer.bottom{background:var(--bg);padding:40px var(--px) 36px;color:var(--muted);font-size:.95rem}
+
+.stick{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:12px;padding:calc(10px + env(safe-area-inset-top,0px)) var(--px) 10px;background:var(--bg);background:color-mix(in srgb,var(--bg) 90%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 6px 24px rgba(0,0,0,.08);transform:translateY(-110%);visibility:hidden;transition:transform .45s cubic-bezier(.2,.7,.2,1),visibility 0s .45s}
+.stick.on{transform:none;visibility:visible;transition:transform .45s cubic-bezier(.2,.7,.2,1),visibility 0s}
+.stick img{width:40px;height:40px;border-radius:50%;object-fit:cover;display:block}
+.stick .who{display:flex;flex-direction:column;line-height:1.2;margin-right:auto}
+.stick nav{display:flex;gap:2px;margin-right:8px}
+.stick nav a{text-decoration:none;color:var(--muted);font-size:.9rem;padding:5px 12px;border-radius:var(--pill);transition:background-color .25s,color .25s}
+.stick nav a:hover{color:var(--ink)}
+.stick nav a[aria-current="true"]{color:var(--ink);text-decoration:underline;text-decoration-thickness:3px;text-decoration-color:var(--accent);text-underline-offset:8px}
+header.top nav a[aria-current="true"]{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:3px;text-underline-offset:6px}
+@media (max-width:900px){.stick nav{display:none}}
+:root[data-theme="1990"] .stick nav a{color:#0000EE;text-decoration:underline}
+:root[data-theme="1990"] .stick nav a[aria-current="true"]{color:#000}
+.stick .btn.sm{padding:5px 12px;font-size:.8rem}
+.stick .who span{color:var(--muted);font-size:.85rem}
+@media (max-width:480px){.stick .who span{display:none}}
 
 /* Анимации */
-@keyframes up{from{opacity:0;transform:translateY(18px)}}
-@keyframes unveil{from{clip-path:inset(0 0 100% 0);transform:scale(1.08)}}
-@keyframes pulse{from{box-shadow:0 0 0 0 rgba(34,197,94,.5)}70%,to{box-shadow:0 0 0 8px rgba(34,197,94,0)}}
-@keyframes progress{from{transform:scaleX(0)}}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.hero>*{animation:up .8s cubic-bezier(.2,.7,.2,1) both}
+.hero>div:first-child{animation-delay:.05s}
+.hero>div:nth-child(2){animation-delay:.25s}
+.hero>div:last-child{animation-delay:.4s}
+header.top{animation:up .6s ease both}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
 
-.photo{animation:unveil 1s cubic-bezier(.2,.7,.2,1) both}
-header>div>*,.contacts>*{animation:up .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:.2s}
-header>div>:nth-child(2){animation-delay:.3s}
-header>div>:nth-child(3){animation-delay:.4s}
-.contacts>:nth-child(2){animation-delay:.5s}
-.contacts>:nth-child(3){animation-delay:.6s}
-.dot{animation:pulse 2.4s infinite}
+/* Тема 1990 */
+:root[data-theme="1990"] body{font-size:18px;line-height:1.5}
+:root[data-theme="1990"] .stick{box-shadow:none;border-bottom:2px groove #808080}
+:root[data-theme="1990"] .stick img{border-radius:0}
+:root[data-theme="1990"] h1,:root[data-theme="1990"] h2,:root[data-theme="1990"] h3{letter-spacing:0}
+:root[data-theme="1990"] h2{border-bottom:2px groove #808080;padding-bottom:4px}
+:root[data-theme="1990"] a{color:#0000EE;text-decoration:underline}
+:root[data-theme="1990"] a:visited{color:#551A8B}
+:root[data-theme="1990"] a:hover{color:#EE0000}
+:root[data-theme="1990"] header.top nav a{color:#0000EE}
+:root[data-theme="1990"] .btn,:root[data-theme="1990"] .btn.main{background:#C0C0C0;color:#000;border:2px outset #fff;font-weight:400}
+:root[data-theme="1990"] .btn:active{border-style:inset}
+:root[data-theme="1990"] .link{display:inline;padding:0;border:0;font-weight:400;font-size:inherit}
+:root[data-theme="1990"] .link::after{content:none}
+:root[data-theme="1990"] .link:hover{background:none}
+:root[data-theme="1990"] #themes{border:2px outset #fff}
+:root[data-theme="1990"] #themes button{background:#C0C0C0;color:#000}
+:root[data-theme="1990"] #themes button[aria-pressed="true"]{background:#000080;color:#fff}
+:root[data-theme="1990"] .case figure,:root[data-theme="1990"] .gallery img,:root[data-theme="1990"] .photo{border:2px inset #808080}
+:root[data-theme="1990"] .thanks{color:#000080}
 
-.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*80ms)}
-.js .reveal.in{opacity:1;transform:none}
-.gallery div:nth-child(3n+2){--i:1}
-.gallery div:nth-child(3n){--i:2}
-
-.project-img img,.gallery img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
-.project:hover .project-img img,.gallery div:hover img{transform:scale(1.05)}
-
-@supports (animation-timeline:scroll()){
-  body::before{content:"";position:fixed;inset:0 0 auto;height:2px;background:var(--text);transform-origin:0 50%;z-index:9;animation:progress linear;animation-timeline:scroll()}
+@media (min-width:821px){.hero .lead{max-width:none;white-space:nowrap;font-size:clamp(.85rem,calc((100vw - 356px)/30),1.4rem)}}
+@media (max-width:820px){
+  .hero,.cols,.small,.skills,.contact{grid-template-columns:1fr;gap:32px}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .hero{padding:32px var(--px) 48px}
+  .hero{grid-template-columns:96px 1fr;gap:24px}
+  .hero-head,.hero-photo{align-self:center}
+  .hero-photo{grid-row:1}
+  .hero-info{grid-column:1/-1}
+  .photo{max-width:100%}
+  header.top{flex-direction:column;align-items:flex-start}
+  header.top nav{flex-wrap:wrap;gap:8px 18px}
+  .case dl div,ol.jobs li{grid-template-columns:1fr;gap:2px}
+  .thanks{text-align:left}
+  .cta{align-items:flex-start}
+  section{padding:56px var(--px)}
+  .band{padding:56px var(--px)}
 }
-
 @media (prefers-reduced-motion:reduce){
-  *,::before{animation:none!important;transition:none!important}
-  .js .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
 }
 
-/* Темы */
-.themes{position:absolute;top:14px;right:32px;z-index:5;display:flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:999px;background:var(--bg);font-size:.8rem}
-.themes button{font:inherit;color:var(--muted);background:none;border:0;border-radius:999px;padding:4px 12px;cursor:pointer;transition:background-color .25s,color .25s}
-.themes button:hover{color:var(--text)}
-.themes button[aria-pressed=true]{background:var(--text);color:var(--bg)}
-
-@media screen{
-  /* Тёмная */
-  html[data-theme=dark]{color-scheme:dark;--bg:#0f0f10;--text:#ececec;--muted:#a1a1a6;--line:#2a2a2d;--light:#1b1b1e;--faint:#6b6b70;--dash:#3a3a3e}
-  html[data-theme=dark] img{filter:brightness(.9)}
-
-  /* Веб 1990: рабочий стол Win95, серое окно, синие ссылки */
-  @keyframes blink{to{visibility:hidden}}
-  html[data-theme=retro]{--bg:#008080;--text:#000;--muted:#000;--line:#808080;--light:#fff;--faint:#404040;--dash:#808080}
-  html[data-theme=retro] *:not(.dot){animation:none!important;transition:none!important}
-  html[data-theme=retro] body{font-family:"Times New Roman",Times,serif;line-height:1.3}
-  html[data-theme=retro] body::before{display:none}
-  html[data-theme=retro] ::selection{background:#000080;color:#fff}
-  html[data-theme=retro] .page{max-width:860px;margin:20px auto;padding:48px 24px 28px;background:#c0c0c0;border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:1px 1px 0 #000}
-  html[data-theme=retro] .reveal{opacity:1;transform:none}
-  html[data-theme=retro] img{transform:none!important}
-  html[data-theme=retro] a{color:#0000ee;text-decoration:underline;background:none}
-  html[data-theme=retro] a:visited{color:#551a8b}
-  html[data-theme=retro] h1{font:700 2rem Arial,Helvetica,sans-serif;letter-spacing:0}
-  html[data-theme=retro] h3{font-family:Arial,Helvetica,sans-serif;letter-spacing:0}
-  html[data-theme=retro] .title{font-style:italic;color:#000}
-  html[data-theme=retro] .contacts{font-weight:400}
-  html[data-theme=retro] h2{font:700 .9rem Arial,Helvetica,sans-serif;letter-spacing:0;color:#fff;background:#000080;padding:3px 8px;margin-bottom:14px}
-  html[data-theme=retro] header{border-bottom:2px groove #fff}
-  html[data-theme=retro] .project{border-bottom:2px groove #fff}
-  html[data-theme=retro] .project:last-child{border:0}
-  html[data-theme=retro] footer{border-top:2px groove #fff}
-  html[data-theme=retro] .photo,html[data-theme=retro] .project-img,html[data-theme=retro] .gallery div{border:2px inset #fff;border-radius:0}
-  html[data-theme=retro] .skills li::before{content:"\2022";color:#000}
-  html[data-theme=retro] .dot{border-radius:0;background:#f00;animation:blink 1s steps(2,start) infinite}
-  html[data-theme=retro] .themes{top:10px;right:24px;gap:4px;padding:0;border:0;border-radius:0;background:none}
-  html[data-theme=retro] .themes button{padding:2px 10px;border:2px solid;border-color:#fff #404040 #404040 #fff;border-radius:0;background:#c0c0c0;color:#000;font-family:Arial,Helvetica,sans-serif}
-  html[data-theme=retro] .themes button[aria-pressed=true]{border-color:#404040 #fff #fff #404040;font-weight:700}
-}
-
-@media (max-width:720px){
-  .page{padding:36px 18px 64px}
-  .themes{position:static;margin:0 0 24px auto;width:max-content}
-  header,.project{grid-template-columns:1fr;gap:24px}
-  .photo{width:180px;height:180px}
-  h1{font-size:1.85rem}
-  .skills{grid-template-columns:1fr;gap:22px}
-  .project{gap:16px}
-  .project-img{width:100%;height:210px}
-  .gallery{grid-template-columns:1fr 1fr}
-  .job-head{flex-direction:column;gap:2px}
-}
-
+/* Печать */
+@page{margin:14mm}
 @media print{
-  *{animation:none!important;transition:none!important}
-  body::before,.themes{display:none}
-  .js .reveal{opacity:1;transform:none}
-  body{font-size:10.5pt}
-  .page{max-width:none;padding:0}
-  header{grid-template-columns:140px 1fr;gap:20px;margin-bottom:20px;padding-bottom:16px}
-  .photo{width:140px;height:140px;border-radius:6px}
-  h1{font-size:16pt}
-  section{margin-bottom:18px;break-inside:avoid}
-  .project{grid-template-columns:25% 1fr;gap:16px;margin-bottom:20px;padding-bottom:16px;break-inside:avoid;border-color:#ddd}
-  .project:last-child{border:0}
-  .project-img{width:100%;height:auto;aspect-ratio:16/11;border-radius:4px}
-  .project h3{font-size:11pt;margin-bottom:4px}
-  .meta{margin-bottom:8px}
-  .project p{line-height:1.45}
-  .project h3 a::after{content:" (" attr(href) ")";font-size:.75em;font-weight:400;color:var(--muted)}
-  .gallery{gap:8px;margin-bottom:20px;break-before:page;break-inside:avoid}
-  .gallery div{border-radius:4px}
-  .gallery+section{break-before:avoid}
-  footer{margin-top:24px}
+  :root,:root[data-theme]{--bg:#fff;--bg2:#fff;--ink:#000;--muted:#444;--line:#ccc;--accent:#2563EB;--accent2:#0D9488;--px:0px;padding:0;color-scheme:light}
+  body{background:#fff;color:#000;font-size:10.5pt;line-height:1.45}
+  .stick,header.top,.actions,.cta,footer.bottom{display:none!important}
+  .rv,.hero>*,.hero>*>*{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
+  .hero,main>section,.band{background:#fff!important;padding:16pt 0!important;border:0}
+  .hero{grid-template-columns:150px 1fr;gap:16pt 24pt;padding-top:0!important}
+  .photo{max-width:150px}
+  .hero h1{font-size:30pt}
+  .hero .lead{white-space:normal;font-size:12pt;max-width:none}
+  .case,.jobs li,.skills>div,.gallery img,.small .case{break-inside:avoid}
+  h2,h3{break-after:avoid}
+  .case figure img{transform:none!important}
+  .contact{grid-template-columns:1fr}
+  a{text-decoration:none;color:#000}
 }
 </style>
 </head>
 <body>
-<div class="page">
-
-<div class="themes" role="group" aria-label="Оформление">
-  <button type="button" data-t="light">Светлая</button>
-  <button type="button" data-t="dark">Тёмная</button>
-  <button type="button" data-t="retro">1990</button>
+<div class="stick" id="stick">
+  <img src="https://kozubdesign.github.io/portfolio/photo.jpg" alt="" width="40" height="40">
+  <div class="who"><strong>Денис Козуб</strong><span>UI/UX-дизайнер</span></div>
+  <nav aria-label="Разделы (при прокрутке)">
+    <a href="#about">О себе</a>
+    <a href="#projects">Проекты</a>
+    <a href="#experience">Опыт работы</a>
+    <a href="#skills">Навыки</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+  <a class="btn main sm" href="resume.pdf" download>Скачать резюме</a>
 </div>
 
-<header>
-  <img src="photo.jpg" alt="Денис Козуб" class="photo">
-  <div>
-    <h1>Денис Козуб</h1>
-    <div class="title">Веб-дизайнер</div>
-    <div class="contacts">
-      <div>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <a href="tel:+79833162526">+7 983 316-25-26</a>
-      </div>
-      <div>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
-        <a href="https://t.me/kozubdesign" target="_blank" rel="noopener">@kozubdesign</a>
-      </div>
-      <div><span class="dot"></span>м. Берёзовая роща</div>
-    </div>
+<header class="top">
+  <nav aria-label="Разделы">
+    <a href="#about">О себе</a>
+    <a href="#projects">Проекты</a>
+    <a href="#experience">Опыт работы</a>
+    <a href="#skills">Навыки</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+  <div id="themes" role="group" aria-label="Тема оформления">
+    <button type="button" data-t="light">Светлая</button>
+    <button type="button" data-t="dark">Тёмная</button>
+    <button type="button" data-t="1990">1990</button>
   </div>
 </header>
 
-<section>
+<main>
+<div class="hero">
+  <div class="hero-photo">
+    <img class="photo" src="https://kozubdesign.github.io/portfolio/photo.jpg" alt="Денис Козуб" width="260" height="260">
+  </div>
+  <div class="hero-head">
+    <h1>Козуб Денис</h1>
+    <p class="lead">UI/UX-дизайнер с 17-летним опытом.<br>Делаю сайты и интерфейсы, которые приносят заявки.</p>
+  </div>
+  <div class="hero-info">
+    <dl class="spec" aria-label="Коротко обо мне">
+      <div><dt>Опыт</dt><dd>17 лет в вебе, ведущий дизайнер интерфейсов</dd></div>
+      <div><dt>Локация</dt><dd>Новосибирск, м. Берёзовая роща</dd></div>
+      <div><dt>Формат</dt><dd>штат / проекты</dd></div>
+      <div><dt>Контакты</dt><dd class="cont"><a href="tel:+79833162526"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+7-983-316-25-26</a><a href="mailto:kozubdesign@gmail.com"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>kozubdesign@gmail.com</a><a href="https://t.me/kozubdesign" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>@kozubdesign</a></dd></div>
+    </dl>
+    <div class="actions">
+      <a class="btn main sm" href="resume.pdf" download>Скачать резюме</a>
+    </div>
+  </div>
+</div>
+<section class="about cols" id="about">
   <h2>О себе</h2>
-  <p>Делаю понятные сайты и интерфейсы, которые удобны в работе.</p>
-  <p>Высшее образование (строитель, красный диплом). Почти 2 года проработал проектировщиком и понял, что это не моё. Зато дизайн — моё.</p>
-  <p>Начинал с полиграфии и видео, потом ушёл в веб и уже больше пятнадцати лет делаю интерфейсы, сайты, цифровые продукты и контент для них.</p>
-</section>
-
-<section>
-  <h2>Опыт</h2>
-  <div class="job">
-    <div class="job-head"><span>Ведущий дизайнер интерфейсов</span><span>2018 — 2026</span></div>
-    <div class="job-company">ООО «ЗСП» LEDsi · Новосибирск</div>
-  </div>
-  <div class="job">
-    <div class="job-head"><span>Веб-дизайнер</span><span>2009 — 2018</span></div>
-    <div class="job-company">Virtech · Казахстан</div>
-  </div>
-  <div class="job">
-    <div class="job-head"><span>Дизайнер широкого профиля</span><span>2005 — 2009</span></div>
-    <div class="job-company">Провайдер КТВ · Казахстан</div>
+  <div>
+    <p>Делаю сайты и интерфейсы для производителей оборудования и сервисов: понятные, с продуманной структурой и удобные в работе.</p>
+    <p>Начинал в полиграфии и видео, в вебе с 2009 года. Высшее образование строительное (красный диплом), около двух лет работал проектировщиком, затем перешёл в дизайн.</p>
   </div>
 </section>
 
-<section>
+
+<section id="projects">
+<div class="band">
+  <h2>Проекты</h2>
+
+  <article class="case">
+    <div class="head">
+      <h3>Редизайн сайта компании «LEDsi»</h3>
+      <a class="link" href="https://led-si.com" target="_blank" rel="noopener noreferrer">led-si.com</a>
+    </div>
+    <p class="sub">Производитель LED-экранов, Новосибирск</p>
+    <figure><img src="https://kozubdesign.github.io/portfolio/project-ledsi.jpg" alt="Главная страница сайта led-si.com" loading="lazy"></figure>
+    <dl>
+      <div><dt>Задача</dt><dd>Старый сайт устарел и работал на собственном движке. Нужно было полностью переработать дизайн и путь пользователя, добавить обширное портфолио с кейсами и видео, а также конфигуратор, упрощающий оформление заявок.</dd></div>
+      <div><dt>Моя роль</dt><dd>Ведущий дизайнер: структура, прототип, дизайн, конфигуратор. Работал в команде с разработчиками, маркетологами, копирайтером и 3D-дизайнером.</dd></div>
+      <div><dt>Решение</dt><dd>Перестроил логику сайта: посетитель сразу понимает, кто мы и чем занимаемся. Конфигуратор — одна из работ в проекте: он позволяет подобрать экран и оформить заказ за несколько шагов.</dd></div>
+      <div><dt>Результат</dt><dd>Обновлённый сайт и конфигуратор стабильно приносят целевые заявки.</dd></div>
+    </dl>
+  </article>
+</div>
+
+<div class="band">
+  <article class="case">
+    <div class="head">
+      <h3>Сайт и конфигуратор сети компании «СТ-Проект»</h3>
+      <a class="link" href="https://network-technologies.ru" target="_blank" rel="noopener noreferrer">network-technologies.ru</a>
+    </div>
+    <p class="sub">Официальный дилер Eltex, Новосибирск</p>
+    <figure><img src="https://kozubdesign.github.io/portfolio/project-network.jpg" alt="Сайт network-technologies.ru: конфигуратор сети и подбор аналогов" loading="lazy"></figure>
+    <dl>
+      <div><dt>Задача</dt><dd>Сделать с нуля сайт дилера, который отвечает на реальные вопросы клиентов, а не повторяет каталог производителя.</dd></div>
+      <div><dt>Моя роль</dt><dd>Исследование болей клиентов, структура, прототип, дизайн. Работал в команде с разработчиками, маркетологами, копирайтером и 3D-дизайнером.</dd></div>
+      <div><dt>Решение</dt><dd>Сайт, построенный на потребностях клиентов, конфигуратор сети и сервис подбора аналогов импортного оборудования, который стал особенно востребованным после 2022 года.</dd></div>
+      <div><dt>Результат</dt><dd>Сайт вошёл в пятёрку лучших дилеров Eltex по позициям в поисковых системах при минимальных затратах на рекламу.</dd></div>
+    </dl>
+  </article>
+</div>
+
+<div class="band">
+  <article class="case">
+    <div class="head">
+      <h3>Сайт и микро-лендинги компании «KioskLab»</h3>
+      <a class="link" href="https://kiosk-lab.com" target="_blank" rel="noopener noreferrer">kiosk-lab.com</a>
+    </div>
+    <p class="sub">Производитель киосков самообслуживания, постаматов и фандоматов, Новосибирск</p>
+    <figure><img src="https://kozubdesign.github.io/portfolio/project-kiosk.jpg" alt="Сайт kiosk-lab.com" loading="lazy"></figure>
+    <dl>
+      <div><dt>Задача</dt><dd>Запустить с нуля сайт, ориентированный на поисковый трафик, без большого рекламного бюджета.</dd></div>
+      <div><dt>Моя роль</dt><dd>Прототип, дизайн и структура сайта целиком. Над SEO и разработкой работала та же команда: разработчики, маркетологи, копирайтер и 3D-дизайнер.</dd></div>
+      <div><dt>Решение</dt><dd class="one">Основной сайт плюс микро-лендинги под отдельные типы продукции и поисковые запросы.</dd></div>
+      <div><dt>Результат</dt><dd class="one">Сайт стабильно приносит заявки из поиска без вложений в рекламу, только за счёт SEO.</dd></div>
+    </dl>
+  </article>
+</div>
+
+<div class="band">
+  <div class="small">
+    <article class="case">
+      <div class="head">
+        <h3>Сайт сервиса доступа к LED-экранам</h3>
+        <a class="link" href="https://admaster.io/" target="_blank" rel="noopener noreferrer">admaster.io</a>
+      </div>
+      <figure><img src="https://kozubdesign.github.io/portfolio/project-admaster.jpg" alt="Интерфейс сервиса admaster.io" loading="lazy"></figure>
+      <p>Дизайн дашборда, сайта и интерфейса сервиса. После редизайна сервис стал заметно удобнее и понятнее для пользователей. Проект развивается, модули продолжают добавляться.</p>
+    </article>
+    <article class="case">
+      <div class="head">
+        <h3>Видеоконтент для компании «LEDsi»</h3>
+        <a class="link" href="https://www.youtube.com/@LEDsiSmartInnovations/videos" target="_blank" rel="noopener noreferrer">Канал на YouTube</a>
+      </div>
+      <figure><img src="https://kozubdesign.github.io/portfolio/project-video.jpg" alt="Канал LEDsi Smart Innovations на YouTube" loading="lazy"></figure>
+      <p>Съёмка и монтаж роликов о продукции компании для YouTube-канала LEDsi Smart Innovations.</p>
+    </article>
+  </div>
+
+  <div class="gallery">
+    <img src="https://kozubdesign.github.io/portfolio/gallery-01.jpg" alt="Пример работы 1" loading="lazy">
+    <img src="https://kozubdesign.github.io/portfolio/gallery-02.jpg" alt="Пример работы 2" loading="lazy">
+    <img src="https://kozubdesign.github.io/portfolio/gallery-03.jpg" alt="Пример работы 3" loading="lazy">
+    <img src="https://kozubdesign.github.io/portfolio/gallery-04.jpg" alt="Пример работы 4" loading="lazy">
+    <img src="https://kozubdesign.github.io/portfolio/gallery-05.jpg" alt="Пример работы 5" loading="lazy">
+    <img src="https://kozubdesign.github.io/portfolio/gallery-06.jpg" alt="Пример работы 6" loading="lazy">
+  </div>
+</div>
+</section>
+
+<section id="experience">
+  <h2>Опыт работы</h2>
+  <ol class="jobs">
+    <li><span class="years">2018 — н. в.</span><span><strong>Ведущий дизайнер интерфейсов, ООО «ЗСП» (LEDsi), Новосибирск</strong>Сайты и сервисы для производителей оборудования, дизайн-система.</span></li>
+    <li><span class="years">2009 — 2018</span><span><strong>Веб-дизайнер, веб-студия Virtech</strong>Сайты для бизнеса: риелторские агентства, медицинское оборудование, франшизы, каталоги, промо-страницы.</span></li>
+    <li><span class="years">2006 — 2009</span><span><strong>Проектировщик, «СК Нефтепродукт»</strong>Строительное проектирование.</span></li>
+  </ol>
+</section>
+
+<section id="skills">
   <h2>Навыки</h2>
   <div class="skills">
     <div>
-      <h3>Инструменты</h3>
+      <h3>Проектирование</h3>
       <ul>
-        <li>Figma — основной инструмент</li>
-        <li>Adobe Photoshop</li>
-        <li>Нейросети и вайбкодинг для ускорения</li>
+        <li>Пользовательские сценарии</li>
+        <li>Прототипирование</li>
+        <li>UX-исследования</li>
+        <li>Структура и логика сайтов</li>
       </ul>
     </div>
     <div>
       <h3>Дизайн</h3>
       <ul>
-        <li>Композиция, сетка, колористика</li>
-        <li>Типографика</li>
+        <li>Сайты: корпоративные, лендинги, каталоги</li>
+        <li>Дизайн приложений и дашбордов</li>
         <li>UI-киты, гайдлайны, дизайн-системы</li>
+        <li>Композиция, сетка, колористика, типографика</li>
       </ul>
     </div>
     <div>
-      <h3>UX / UI</h3>
+      <h3>Софт</h3>
       <ul>
-        <li>Пользовательские сценарии</li>
-        <li>Прототипирование</li>
-        <li>UX-исследования</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Полиграфия</h3>
-      <ul>
-        <li>От мелкой продукции до каталогов предприятий</li>
-        <li>CorelDRAW — в совершенстве, с 2001 года</li>
-        <li>Adobe Illustrator</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Видео и звук</h3>
-      <ul>
-        <li>Adobe Premiere Pro</li>
+        <li>Figma</li>
+        <li>Adobe Photoshop</li>
+        <li>CorelDRAW</li>
         <li>Adobe After Effects</li>
-        <li>Adobe Audition</li>
+        <li>Нейросети / AI-инструменты</li>
       </ul>
     </div>
     <div>
-      <h3>Электроника</h3>
+      <h3>Дополнительно</h3>
       <ul>
-        <li>DipTrace, EasyEDA</li>
-        <li>Чтение электронных схем</li>
-        <li>Пайка и сборка аналоговых устройств</li>
+        <li>Полиграфия любого уровня</li>
+        <li>Видеомонтаж и анимация</li>
+        <li>Обработка звука</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section>
-  <h2 class="lg">Проекты</h2>
-
-  <div class="project">
-    <div class="project-img"><img src="project-kiosk.jpg" alt="kiosk-lab.com" loading="lazy"></div>
-    <div>
-      <h3><a href="https://kiosk-lab.com" target="_blank" rel="noopener">kiosk-lab.com</a></h3>
-      <div class="meta">Сайт производителя киосков самообслуживания, постаматов и фандоматов · Новосибирск</div>
-      <p>Полная разработка с нуля: прототип, дизайн, структура. Сайт получился «бриллиантом» среди проектов компании — за счёт микро-лендингов до сих пор отлично конвертит с SEO даже без вложений в рекламу.</p>
-    </div>
-  </div>
-
-  <div class="project">
-    <div class="project-img"><img src="project-ledsi.jpg" alt="led-si.com" loading="lazy"></div>
-    <div>
-      <h3><a href="https://led-si.com" target="_blank" rel="noopener">led-si.com</a></h3>
-      <div class="meta">Сайт производителя LED-экранов · Новосибирск</div>
-      <p>Полный редизайн старого сайта: перекроили логику, теперь клиент сразу понимает, кто мы и чем занимаемся. Главная фишка — конфигуратор LED-экрана. Даже человек без опыта за 7 кликов может понять, что ему нужно, и оформить заказ. Конфигуратор стабильно приносит целевые лиды.</p>
-    </div>
-  </div>
-
-  <div class="project">
-    <div class="project-img"><img src="project-network.jpg" alt="network-technologies.ru" loading="lazy"></div>
-    <div>
-      <h3><a href="https://network-technologies.ru" target="_blank" rel="noopener">network-technologies.ru</a></h3>
-      <div class="meta">Официальный дилер Eltex · СТ-Проект · Новосибирск</div>
-      <p>Сайт с нуля с учётом реальных болей клиентов. Дополнительно сделали конфигуратор сети (идею потом подхватили конкуренты) и сервис подбора аналогов импортного оборудования — особенно востребованный после 2022 года. Сайт довольно быстро вошёл в пятёрку лучших дилеров при минимальных затратах на рекламу.</p>
-    </div>
-  </div>
-
-  <div class="project">
-    <div class="project-img"><img src="project-admaster.jpg" alt="admaster.io" loading="lazy"></div>
-    <div>
-      <h3><a href="https://admaster.io/" target="_blank" rel="noopener">admaster.io</a></h3>
-      <div class="meta">Сервис удалённого доступа к LED-экранам · Новосибирск</div>
-      <p>Дизайн дашборда, сайта и интерфейса сервиса. Ушли от шаблонного оформления — стало заметно удобнее и понятнее для пользователей. Проект живой, модули продолжают добавляться.</p>
-    </div>
-  </div>
-
-  <div class="project">
-    <div class="project-img"><img src="project-video.jpg" alt="Видеоконтент для компании LEDsi" loading="lazy"></div>
-    <div>
-      <h3><a href="https://www.youtube.com/@LEDsiSmartInnovations/videos" target="_blank" rel="noopener">Видеоконтент для компании LEDsi</a></h3>
-      <div class="meta">Канал LEDsi Smart Innovations на YouTube · Новосибирск</div>
-    </div>
+<section class="offwork cols" id="offwork">
+  <h2>Семья и хобби</h2>
+  <div>
+    <p>Женат, есть дочь. Играю на электрогитаре и клавишных, хожу на концерты, играю в настольные игры по вселенной D&amp;D. Из технического хобби — аналоговая электроника, пайка винтажных усилителей для электрогитары, программирование микроконтроллеров и домашний сервер.</p>
   </div>
 </section>
 
-<div class="gallery">
-  <div><img src="gallery-01.jpg" alt="" loading="lazy"></div>
-  <div><img src="gallery-02.jpg" alt="" loading="lazy"></div>
-  <div><img src="gallery-03.jpg" alt="" loading="lazy"></div>
-  <div><img src="gallery-04.jpg" alt="" loading="lazy"></div>
-  <div><img src="gallery-05.jpg" alt="" loading="lazy"></div>
-  <div><img src="gallery-06.jpg" alt="" loading="lazy"></div>
-</div>
-
-<section>
-  <h2>Другие проекты</h2>
-  <p>За всё время работы сделал большое количество сайтов: риелторские агентства, таймшеринг, представительства компаний в Европе, серия сайтов по медицинскому оборудованию, франшизы, сайты-каталоги «умных остановок», сайты производителей оборудования разного масштаба, дизайны приложений и промо-страницы.</p>
+<section class="contact" id="contact">
+  <div>
+    <h2>Мои контакты</h2>
+    <ul>
+      <li>Телефон: <a href="tel:+79833162526">+7-983-316-25-26</a></li>
+      <li>Почта: <a href="mailto:kozubdesign@gmail.com">kozubdesign@gmail.com</a></li>
+      <li>Telegram: <a href="https://t.me/kozubdesign" target="_blank" rel="noopener noreferrer">@kozubdesign</a></li>
+      <li>Новосибирск, м. Берёзовая роща</li>
+    </ul>
+  </div>
+  <div class="cta">
+    <p class="thanks">Открыт для<br>новых задач</p>
+    <a class="btn main" href="https://t.me/kozubdesign" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>Написать в Telegram</a>
+  </div>
 </section>
+</main>
 
-<section>
-  <h2>Личное</h2>
-  <p>Женат, есть дочь и кот. Из увлечений: странная музыка, электрогитара, синтезатор, укулеле, пайка, аналоговая электроника, микроконтроллеры, домашние серверы, настольные игры, концерты неизвестных групп, кино и природа.</p>
-</section>
-
-<footer>Денис Козуб · Веб-дизайнер · 2026</footer>
-
-</div>
+<footer class="bottom">
+  <p class="copy">© 2026 Денис Козуб</p>
+</footer>
 
 <script>
-const io=new IntersectionObserver((list,o)=>list.forEach(e=>{
-  if(e.isIntersecting){e.target.classList.add("in");o.unobserve(e.target)}
-}),{threshold:.15});
-document.querySelectorAll("section,h2.lg,.project,.gallery div,footer").forEach(el=>{
-  if(!el.querySelector(".project")){el.classList.add("reveal");io.observe(el)}
-});
-</script>
-<script>
-const btns=document.querySelectorAll(".themes button");
-const mark=t=>btns.forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===t));
-btns.forEach(b=>b.onclick=()=>{
-  document.documentElement.dataset.theme=b.dataset.t;
-  mark(b.dataset.t);
-  try{localStorage.setItem("theme",b.dataset.t)}catch(e){}
-});
-mark(document.documentElement.dataset.theme);
+(function(){
+  var root=document.documentElement,btns=document.querySelectorAll('#themes button');
+  try{var s=localStorage.getItem('theme');if(s==='light'||s==='dark'||s==='1990'){root.setAttribute('data-theme',s)}}catch(e){}
+  function cur(){var t=root.getAttribute('data-theme');if(t)return t;return matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+  function mark(){var c=cur();btns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-t')===c?'true':'false')})}
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    var t=b.getAttribute('data-t');root.setAttribute('data-theme',t);
+    try{localStorage.setItem('theme',t)}catch(e){}
+    mark();
+  })});
+  mark();
+
+  window.addEventListener('beforeprint',function(){
+    document.querySelectorAll('img[loading="lazy"]').forEach(function(i){i.loading='eager'});
+    document.querySelectorAll('.rv').forEach(function(e){e.classList.add('in')});
+  });
+  var st=document.getElementById('stick');
+  var links=document.querySelectorAll('.stick nav a,header.top nav a');
+  var secs=[].slice.call(document.querySelectorAll('main section[id],main section[data-nav]'));
+  function spy(){
+    var cur='';
+    secs.forEach(function(x){if(x.getBoundingClientRect().top<=120)cur=x.getAttribute('data-nav')||x.id});
+    if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4)cur='contact';
+    links.forEach(function(a){a.setAttribute('aria-current',a.getAttribute('href')==='#'+cur?'true':'false')});
+  }
+  function chk(){st.classList.toggle('on',window.scrollY>360);spy()}
+  window.addEventListener('scroll',chk,{passive:true});chk();
+
+  /* Плавное появление блоков при прокрутке */
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var items=document.querySelectorAll('main section>h2,.band>h2,.about>div,.jobs li,.skills>div,.case,.gallery img,.offwork>div,.contact>*');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+  })},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  items.forEach(function(el,i){
+    if(el.closest('.gallery')){el.style.setProperty('--d',(Array.prototype.indexOf.call(el.parentNode.children,el)%3)*.12+'s')}
+    el.classList.add('rv');io.observe(el);
+  });
+})();
 </script>
 </body>
 </html>
