@@ -49,25 +49,26 @@ header.top nav a:hover{color:var(--ink)}
 #themes button:hover{color:var(--accent)}
 #themes button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 
-/* ===== HERO (карточный вариант, фото во всю высоту справа) ===== */
+/* ===== HERO: карточка, фото на всю высоту справа ===== */
 .hero{
   padding:24px var(--px) 48px;
 }
 .hero-card{
-  background:#111111;
+  background:#0d0b0c;
   color:#FFFFFF;
   border-radius:20px;
   display:grid;
   grid-template-columns:1fr 420px;
-  gap:48px;
-  align-items:stretch; /* Растягиваем колонки по высоте */
-  padding:48px 0 48px 56px; /* Убрали правый padding */
-  overflow:hidden;
+  gap:0;
+  align-items:stretch;
+  padding:0;            /* отступов у карточки нет — они перенесены в .hero-left */
+  overflow:hidden;      /* скругляет углы фото */
 }
 .hero-left{
   display:flex;
   flex-direction:column;
   gap:24px;
+  padding:48px 48px 48px 56px;
 }
 .hero-left h1{
   font-size:clamp(2.2rem, 4vw, 3.2rem);
@@ -102,15 +103,18 @@ header.top nav a:hover{color:var(--ink)}
 .hero-contacts svg{color:#FFFFFF;flex-shrink:0}
 
 .hero-right{
-  display:flex;
-  height:100%;
+  position:relative;    /* контейнер для абсолютной картинки */
+  min-height:360px;
 }
 .photo{
-  display:block;
+  position:absolute;    /* вне потока: высоту задаёт левая колонка */
+  inset:0;
   width:100%;
   height:100%;
-  object-fit:cover; /* Заполняет всю высоту без искажения пропорций */
-  border-radius:0 20px 20px 0; /* Скругление по правому краю карточки */
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+  border-radius:0;
 }
 
 .hero-btn-wrap{
@@ -226,15 +230,12 @@ header.top nav a[aria-current="true"]{color:var(--ink);text-decoration:underline
 @media (max-width:820px){
   .hero-card{
     grid-template-columns:1fr;
-    gap:32px;
-    padding:32px 24px;
+    gap:0;
+    padding:0;
   }
-  .hero-right{
-    justify-content:center;
-  }
-  .photo{
-    max-width:240px;
-  }
+  .hero-left{padding:32px 24px}
+  .hero-right{min-height:320px}
+  .photo{max-width:none}
   .cols,.small,.skills,.contact{grid-template-columns:1fr;gap:32px}
   .gallery{grid-template-columns:repeat(2,1fr)}
   header.top{flex-direction:column;align-items:flex-start}
@@ -259,9 +260,11 @@ header.top nav a[aria-current="true"]{color:var(--ink);text-decoration:underline
   .rv,.hero>*,.hero>*>*{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
   .hero,main>section,.band{background:#fff!important;padding:16pt 0!important;border:0}
   .hero-card{background:#fff!important;color:#000!important;border:0;padding:0!important}
+  .hero-left{padding:0}
   .hero-card h1{color:#000!important;font-size:22pt}
   .hero-card .lead,.hero-card .hero-contacts a{color:#333!important}
-  .photo{max-width:150px}
+  .hero-right{position:static;min-height:0}
+  .photo{position:static;height:auto;max-width:150px}
   .case,.jobs li,.skills>div,.gallery img,.small .case{break-inside:avoid}
   h2,h3{break-after:avoid}
   .case figure img{transform:none!important}
@@ -324,9 +327,9 @@ header.top nav a[aria-current="true"]{color:var(--ink);text-decoration:underline
         <a class="btn main" href="resume.pdf" download="Резюме_Козуб_UIUX_дизайнер.pdf">Скачать резюме</a>
       </div>
     </div>
-<div class="hero-right">
-  <img class="photo" src="https://kozubdesign.github.io/portfolio/me.png" alt="Денис Козуб">
-</div>
+    <div class="hero-right">
+      <img class="photo" src="https://kozubdesign.github.io/portfolio/me.png" alt="Денис Козуб">
+    </div>
   </div>
 </div>
 <section class="about cols" id="about">
@@ -334,7 +337,7 @@ header.top nav a[aria-current="true"]{color:var(--ink);text-decoration:underline
   <div>
     <p>Делаю сайты и интерфейсы для производителей оборудования и сервисов: понятные, с продуманной структурой и удобные в работе.</p>
     <p>В вебе с 2009 года. До этого получил высшее строительное образование (красный диплом) и два года работал проектировщиком. Начинал в полиграфии и видео.</p>
-    <p>Живу в Новосибирске, женат, есть дочь. В свободное время — гитара, D&D и аналоговая электроника.</p>
+    <p>Живу в Новосибирске, женат, есть дочь. В свободное время — гитара, D&amp;D и аналоговая электроника.</p>
   </div>
 </section>
 <section id="projects">
