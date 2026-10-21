@@ -296,7 +296,7 @@ header.top nav a[aria-current="true"]{color:var(--ink);text-decoration:underline
 <section id="projects">
   <div class="band">
     <h2>Проекты</h2>
-    <article class="case">
+    <article class="case no-anim">
       <div class="head">
         <h3>Редизайн сайта компании «LEDsi»</h3>
         <a class="link" href="https://led-si.com" target="_blank" rel="noopener noreferrer">led-si.com</a>
@@ -475,6 +475,7 @@ header.top nav a[aria-current="true"]{color:var(--ink);text-decoration:underline
     if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
   })},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
   items.forEach(function(el){
+    if(el.classList.contains('no-anim'))return;
     if(el.closest('.gallery')){el.style.setProperty('--d',(Array.prototype.indexOf.call(el.parentNode.children,el)%3)*.12+'s')}
     el.classList.add('rv');io.observe(el);
   });
