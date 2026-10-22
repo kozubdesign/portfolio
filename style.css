@@ -95,8 +95,8 @@ header.top nav a[aria-current="true"]{
   content:"";
   position:absolute;
   top:0;bottom:0;left:0;
-  width:64px;
-  background:linear-gradient(to right,var(--hero-bg),rgba(9,8,8,0));
+  width:90px;
+  background:linear-gradient(to right,var(--hero-bg) 0,rgba(9,8,8,.85) 20%,rgba(9,8,8,.45) 50%,rgba(9,8,8,.12) 80%,rgba(9,8,8,0) 100%);
   z-index:1;
   pointer-events:none;
 }
