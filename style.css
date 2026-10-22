@@ -89,6 +89,7 @@ header.top nav a[aria-current="true"]{
 .hero-contacts a:hover{color:var(--accent)}
 .hero-contacts svg{flex-shrink:0}
 .hero-btn-wrap{margin-top:4px}
+.hero-btn-wrap .btn{padding-left:53px;padding-right:53px} /* кнопка шире примерно на 30% */
 
 .hero-right{position:relative;min-height:360px;overflow:hidden}
 .hero-right::before{ /* плавный переход фото в фон карточки */
