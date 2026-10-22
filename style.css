@@ -1,0 +1,334 @@
+/* ==========================================================
+   Портфолио: Денис Козуб
+   Оглавление: 1 Переменные · 2 База · 3 Шапка и меню · 4 Hero
+   5 Кнопки · 6 Секции · 7 Проекты · 8 Опыт и навыки · 9 Контакты
+   10 Закреплённая панель · 11 Анимации · 12 Мобильная версия
+   13 Печать
+   ========================================================== */
+
+/* 1. Переменные */
+:root{
+  --bg:#F8F9FA;
+  --bg2:#EFF1F4;
+  --ink:#1A1D21;
+  --muted:#5F6368;
+  --line:#E5E7EB;
+  --accent:#2563EB;
+  --accent-ink:#fff;
+  --hero-bg:#090808;
+  --radius:6px;
+  --pill:999px;
+  /* боковой отступ: контент шириной 1200px по центру, на узких экранах 24px */
+  --px:max(24px,calc((100% - 1200px)/2 + 24px));
+  --sans:'Google Sans','Product Sans',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:light;
+}
+
+/* 2. База */
+*,*::before,*::after{box-sizing:border-box}
+html{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  scroll-behavior:smooth;
+  scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);
+}
+body{
+  margin:0;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  background:var(--bg);
+  color:var(--ink);
+  font:400 1.0625rem/1.65 var(--sans);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1.5px}
+a:hover{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:2px}
+img{max-width:100%}
+h2{font-size:2.2rem;line-height:1.15;letter-spacing:-.02em;margin:0 0 28px;font-weight:700}
+h3{font-size:1.35rem;line-height:1.25;margin:0;font-weight:700}
+
+/* 3. Шапка и меню */
+header.top{display:flex;justify-content:flex-start;align-items:center;gap:16px;padding:20px var(--px)}
+header.top nav{display:flex;gap:22px;font-size:.95rem}
+header.top nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+header.top nav a:hover{color:var(--ink)}
+header.top nav a[aria-current="true"]{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:var(--accent);
+  text-decoration-thickness:3px;
+  text-underline-offset:6px;
+}
+
+/* 4. Hero: карточка с фото на всю высоту справа */
+.hero{padding:24px var(--px) 48px;animation:up .8s var(--ease) both}
+.hero-card{
+  display:grid;
+  grid-template-columns:1fr 520px;
+  align-items:stretch;
+  background:var(--hero-bg);
+  color:#fff;
+  border-radius:20px;
+  overflow:hidden; /* скругляет углы фото */
+}
+.hero-left{display:flex;flex-direction:column;gap:24px;padding:48px 48px 48px 56px}
+.hero-left h1{
+  margin:0;
+  font-size:clamp(2.2rem,4vw,3.2rem);
+  line-height:1.1;
+  letter-spacing:-.03em;
+  font-weight:700;
+  color:#fff;
+}
+.hero-left .lead{margin:0;max-width:36ch;font-size:1.1rem;line-height:1.5;color:#9AA0A6}
+.hero-contacts{display:flex;flex-direction:column;gap:12px}
+.hero-contacts a{display:inline-flex;align-items:center;gap:.75em;text-decoration:none;color:#fff;font-size:1rem;transition:color .2s}
+.hero-contacts a:hover{color:var(--accent)}
+.hero-contacts svg{flex-shrink:0}
+.hero-btn-wrap{margin-top:4px}
+
+.hero-right{position:relative;min-height:360px;overflow:hidden}
+.hero-right::before{ /* плавный переход фото в фон карточки */
+  content:"";
+  position:absolute;
+  top:0;bottom:0;left:0;
+  width:64px;
+  background:linear-gradient(to right,var(--hero-bg),rgba(9,8,8,0));
+  z-index:1;
+  pointer-events:none;
+}
+.photo{
+  position:absolute; /* вне потока: высоту задаёт левая колонка */
+  top:0;right:0;bottom:0;left:0;
+  display:block;
+  width:100%;
+  max-width:none;
+  height:100%;
+  object-fit:cover;
+  object-position:right bottom;
+  -webkit-transform:scale(1.08);
+  transform:scale(1.08);
+  -webkit-transform-origin:right bottom;
+  transform-origin:right bottom;
+}
+
+/* 5. Кнопки и ссылки-пилюли */
+.btn{
+  display:inline-block;
+  padding:12px 22px;
+  border:1.5px solid var(--ink);
+  border-radius:var(--radius);
+  text-decoration:none;
+  font-weight:500;
+  transition:transform .2s,filter .2s,border-color .2s;
+}
+.btn.sm{padding:7px 16px;font-size:.9rem}
+.btn.main{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.btn.main:hover{filter:brightness(1.1);-webkit-transform:translateY(-2px);transform:translateY(-2px);color:#fff}
+
+.link{
+  display:inline-flex;
+  align-items:center;
+  gap:.45em;
+  padding:5px 14px;
+  border:1px solid var(--line);
+  border-radius:var(--pill);
+  text-decoration:none;
+  font-size:.92rem;
+  font-weight:500;
+  white-space:nowrap;
+  transition:background-color .15s,color .15s,border-color .15s;
+}
+.link::after{
+  content:"";
+  width:.8em;
+  height:.8em;
+  background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 3h8v8M13 3 3 13' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 3h8v8M13 3 3 13' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+  transition:transform .15s;
+}
+.link:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.link:hover::after{-webkit-transform:translate(2px,-2px);transform:translate(2px,-2px)}
+
+/* 6. Секции */
+section{padding:72px var(--px)}
+#about,#skills{background:var(--bg2)}
+#projects{padding:0}
+.band{padding:72px var(--px)}
+.band:nth-of-type(even){background:var(--bg2)}
+.cols{display:grid;grid-template-columns:1fr 2fr;gap:56px}
+.cols>h2{margin:0}
+.about p{margin:0 0 1em;max-width:62ch}
+
+/* 7. Проекты */
+.case .head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 24px;margin-bottom:6px}
+.case h3{font-size:1.9rem;line-height:1.15;letter-spacing:-.02em}
+.small .case h3{font-size:1.52rem}
+.case .sub{margin:0 0 20px;color:var(--muted)}
+.case figure{margin:0 0 32px;aspect-ratio:16/9;background:var(--line);border-radius:var(--radius);overflow:hidden}
+.case figure img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.case:hover figure img{-webkit-transform:scale(1.025);transform:scale(1.025)}
+.case dl{margin:0}
+.case dl div{display:grid;grid-template-columns:8rem 1fr;gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+.case dl div:first-child{border-top:0;padding-top:0}
+.case dt{color:var(--muted);font-size:.95rem}
+.case dd{margin:0;max-width:62ch}
+.case dd.one{max-width:none}
+.small{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.small .case p{margin:0}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;align-items:start}
+.gallery img{display:block;width:100%;height:auto;border-radius:var(--radius);background:var(--line);transition:transform .4s var(--ease)}
+.gallery img:hover{-webkit-transform:translateY(-4px);transform:translateY(-4px)}
+
+/* запасной вариант для браузеров без aspect-ratio (Safari до 15) */
+@supports not (aspect-ratio:16/9){
+  .case figure{position:relative;height:0;padding-top:56.25%}
+  .case figure img{position:absolute;top:0;left:0}
+}
+
+/* 8. Опыт и навыки */
+ol.jobs{list-style:none;margin:0;padding:0}
+ol.jobs li{display:grid;grid-template-columns:9rem 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
+ol.jobs .years{color:var(--muted)}
+ol.jobs strong{display:block}
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:40px 56px}
+.skills h3{font-size:1.1rem;margin-bottom:10px}
+.skills ul{margin:0;padding:0;list-style:none}
+.skills li{padding:7px 0;border-top:1px solid var(--line)}
+
+/* 9. Контакты и подвал */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:stretch}
+.contact ul{list-style:none;margin:0;padding:0;font-size:1.15rem}
+.contact li{display:flex;align-items:center;gap:.75em;padding:8px 0}
+.contact li svg{flex-shrink:0;color:var(--accent)}
+.cta{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:24px}
+.cta .btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.65em;
+  padding:16px 30px;
+  font-size:1.15rem;
+  box-shadow:0 10px 28px rgba(37,99,235,.38);
+  box-shadow:0 10px 28px color-mix(in srgb,var(--accent) 38%,transparent);
+}
+.cta .btn svg{transition:transform .25s}
+.cta .btn:hover{-webkit-transform:translateY(-3px);transform:translateY(-3px)}
+.cta .btn:hover svg{-webkit-transform:translate(3px,-3px);transform:translate(3px,-3px)}
+.thanks{margin:0;text-align:right;font-size:clamp(2.4rem,6vw,4.25rem);line-height:1.05;font-weight:700;letter-spacing:-.03em;color:var(--accent)}
+footer.bottom{padding:40px var(--px) 36px;background:var(--bg);color:var(--muted);font-size:.95rem}
+.copy{margin:0;font-size:1rem}
+
+/* 10. Закреплённая панель */
+.stick{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:calc(10px + env(safe-area-inset-top,0px)) var(--px) 10px;
+  background:var(--bg);
+  background:rgba(248,249,250,.92);
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+  box-shadow:0 6px 24px rgba(0,0,0,.08);
+  -webkit-transform:translateY(-110%);
+  transform:translateY(-110%);
+  visibility:hidden;
+  transition:transform .45s var(--ease),visibility 0s .45s;
+}
+.stick.on{-webkit-transform:none;transform:none;visibility:visible;transition:transform .45s var(--ease),visibility 0s}
+.stick img{display:block;width:40px;height:40px;border-radius:50%;object-fit:cover}
+.stick .who{display:flex;flex-direction:column;margin-right:auto;line-height:1.2}
+.stick .who span{color:var(--muted);font-size:.85rem}
+.stick nav{display:flex;gap:2px;margin-right:8px}
+.stick nav a{padding:5px 12px;border-radius:var(--pill);text-decoration:none;color:var(--muted);font-size:.9rem;transition:color .25s}
+.stick nav a:hover{color:var(--ink)}
+.stick nav a[aria-current="true"]{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:var(--accent);
+  text-decoration-thickness:3px;
+  text-underline-offset:8px;
+}
+.stick .btn.sm{padding:5px 12px;font-size:.8rem}
+
+/* 11. Анимации */
+@-webkit-keyframes up{from{opacity:0;-webkit-transform:translateY(16px)}to{opacity:1;-webkit-transform:none}}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.rv{
+  opacity:0;
+  -webkit-transform:translateY(22px);
+  transform:translateY(22px);
+  transition:opacity .9s ease,transform .9s var(--ease);
+  transition-delay:var(--d,0s);
+}
+.rv.in{opacity:1;-webkit-transform:none;transform:none}
+
+/* 12. Мобильная версия */
+@media (max-width:900px){
+  .stick nav{display:none}
+}
+@media (max-width:820px){
+  header.top nav a[href="#contact"]{display:none}
+  .hero-card{grid-template-columns:1fr}
+  .hero-right{order:-1;min-height:340px} /* фото сверху */
+  .hero-right::before{ /* затухание фото вниз, в чёрный фон карточки */
+    top:auto;left:0;right:0;bottom:0;
+    width:auto;
+    height:55%;
+    background:linear-gradient(to bottom,rgba(9,8,8,0),var(--hero-bg));
+  }
+  .photo{
+    object-position:62% center; /* лицо точно по центру кадра */
+    -webkit-transform:none;transform:none;
+  }
+  .hero-left{padding:0 24px 32px;margin-top:-8px}
+  .hero-left .lead{max-width:none;font-size:1.25rem} /* текст в шапке на всю ширину, крупнее */
+  .hero-left .lead br{display:none} /* единый абзац без переноса */
+  .hero-left h1,.hero-left .lead{text-align:center} /* имя и текст по центру */
+  .hero-contacts,.hero-btn-wrap{align-self:center} /* контакты и кнопка по центру */
+  .hero-contacts a{font-size:1.15rem;font-weight:600} /* контакты крупнее и жирнее */
+  header.top{padding-top:10px;padding-bottom:10px} /* отступ сверху вдвое меньше */
+  .hero{padding-top:12px}
+  .cols,.small,.skills,.contact{grid-template-columns:1fr;gap:32px}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  header.top nav{flex-wrap:wrap;gap:8px 18px}
+  .case dl div,ol.jobs li{grid-template-columns:1fr;gap:2px}
+  .thanks{text-align:left}
+  .cta{align-items:flex-start}
+  section,.band{padding:56px var(--px)}
+}
+@media (max-width:480px){
+  .stick .who span{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{-webkit-animation:none!important;animation:none!important;transition:none!important}
+  .rv{opacity:1;-webkit-transform:none;transform:none}
+}
+
+/* 13. Печать */
+@page{margin:14mm}
+@media print{
+  :root{--bg:#fff;--bg2:#fff;--ink:#000;--muted:#444;--line:#ccc;--px:0px}
+  body{padding:0;background:#fff;color:#000;font-size:10.5pt;line-height:1.45}
+  .stick,header.top,.cta,footer.bottom,.hero-right::before{display:none!important}
+  .rv,.hero{opacity:1!important;-webkit-transform:none!important;transform:none!important;-webkit-animation:none!important;animation:none!important;transition:none!important}
+  .hero,main>section,.band{padding:16pt 0!important;background:#fff!important;border:0}
+  .hero-card{background:#fff!important;color:#000!important}
+  .hero-left{padding:0}
+  .hero-left h1{color:#000!important;font-size:22pt}
+  .hero-left .lead,.hero-contacts a{color:#333!important}
+  .hero-right{position:static;min-height:0}
+  .photo{position:static;height:auto;max-width:150px;-webkit-transform:none;transform:none}
+  .case,.jobs li,.skills>div,.gallery img,.small .case{break-inside:avoid;page-break-inside:avoid}
+  h2,h3{break-after:avoid;page-break-after:avoid}
+  .case figure img{-webkit-transform:none!important;transform:none!important}
+  .contact{grid-template-columns:1fr}
+  a{text-decoration:none;color:#000}
+}
