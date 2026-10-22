@@ -275,7 +275,7 @@ footer.bottom{padding:40px var(--px) 36px;background:var(--bg);color:var(--muted
   .stick nav{display:none}
 }
 @media (max-width:820px){
-  header.top nav a[href="#contact"]{display:none}
+  header.top{display:none} /* верхнее меню скрыто на мобильной версии */
   .hero-card{grid-template-columns:1fr}
   .hero-right{order:-1;min-height:340px} /* фото сверху */
   .hero-right::before{ /* затухание фото вниз, в чёрный фон карточки */
