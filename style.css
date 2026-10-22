@@ -289,11 +289,12 @@ footer.bottom{padding:40px var(--px) 36px;background:var(--bg);color:var(--muted
     -webkit-transform:none;transform:none;
   }
   .hero-left{padding:0 24px 32px;margin-top:-8px}
-  .hero-left .lead{max-width:none;font-size:1.25rem} /* текст в шапке на всю ширину, крупнее */
+  .hero-left .lead{max-width:none;font-size:1.05rem} /* текст в шапке на всю ширину */
   .hero-left .lead br{display:none} /* единый абзац без переноса */
   .hero-left h1,.hero-left .lead{text-align:center} /* имя и текст по центру */
   .hero-contacts,.hero-btn-wrap{align-self:center} /* контакты и кнопка по центру */
   .hero-contacts a{font-size:1.15rem;font-weight:600} /* контакты крупнее и жирнее */
+  .hero-contacts{gap:4px} /* расстояния между контактами меньше */
   header.top{padding-top:10px;padding-bottom:10px} /* отступ сверху вдвое меньше */
   .hero{padding-top:12px}
   .cols,.small,.skills,.contact{grid-template-columns:1fr;gap:32px}
